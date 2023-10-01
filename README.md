@@ -8,10 +8,8 @@
 ██║  ██║╚██████╔╝╚███╔███╔╝       ██║   ╚██████╔╝    ███████╗██║██║ ╚████║╚██████╔╝██╔╝ ██╗
 ╚═╝  ╚═╝ ╚═════╝  ╚══╝╚══╝        ╚═╝    ╚═════╝     ╚══════╝╚═╝╚═╝  ╚═══╝ ╚═════╝ ╚═╝  ╚═╝
 ```
-# LINUX
-Noob tutorial for some linux distributions ( Debian, Kali, Centos, Gentoo, Arch / black,..)
 
-## Introduction
+# Introduction
 
 Welcome to this collection of tutorials dedicated to the different Linux distributions I use. The goal of these tutorials is not to be exhaustive, but rather to serve as practical examples for the people close to me. However, these resources are open to any contribution, and I would be particularly grateful for any help provided in translation.
 
