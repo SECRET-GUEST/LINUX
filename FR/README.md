@@ -32,3 +32,25 @@ Des inquiétudes ont été exprimées lorsque Canonical et Microsoft ont collabo
 Ubuntu est un excellent point de départ pour ceux qui débutent avec Linux, offrant un équilibre entre la facilité d'utilisation, le support et la stabilité. Toutefois, comme avec toute distribution, il est conseillé de se familiariser avec les politiques de confidentialité et de prendre des mesures pour protéger votre vie privée en ligne.
 
 N'hésitez pas à explorer cette page, où vous trouverez des guides, des astuces et des informations utiles pour vous aider à tirer le meilleur parti de votre expérience Ubuntu.
+
+            
+            .-/+oossssoo+/-.               
+        `:+ssssssssssssssssss+:`           
+      -+ssssssssssssssssssyyssss+-         OS: Ubuntu 22.04.3 LTS x86_64 
+    .ossssssssssssssssssdMMMNysssso.       
+   /ssssssssssshdmmNNmmyNMMMMhssssss/      
+  +ssssssssshmydMMMMMMMNddddyssssssss+     
+ /sssssssshNMMMyhhyyyyhmNMMMNhssssssss/    
+.ssssssssdMMMNhsssssssssshNMMMdssssssss.   
++sssshhhyNMMNyssssssssssssyNMMMysssssss+   
+ossyNMMMNyMMhsssssssssssssshmmmhssssssso   
+ossyNMMMNyMMhsssssssssssssshmmmhssssssso  
++sssshhhyNMMNyssssssssssssyNMMMysssssss+   
+.ssssssssdMMMNhsssssssssshNMMMdssssssss.   
+ /sssssssshNMMMyhhyyyyhdNMMMNhssssssss/    
+  +sssssssssdmydMMMMMMMMddddyssssssss+     
+   /ssssssssssshdmNNNNmyNMMMMhssssss/      
+    .ossssssssssssssssssdMMMNysssso.       
+      -+sssssssssssssssssyyyssss+-
+        `:+ssssssssssssssssss+:`                                   
+            .-/+oossssoo+/-.           
