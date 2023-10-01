@@ -87,7 +87,7 @@ Maintenant, vous pouvez explorer le guide. Ci-dessous, vous trouverez un sommair
 ## Guide des distributions Linux
 
 1. [Environnements de Bureau Alternatifs](#environnements-de-bureau-alternatifs)
-2. [Distributions Orientées Terminal](#distributions-orientées-terminal) 
+2. [Autres Distributions](#autres-distributions) 
 
 
 
@@ -167,6 +167,8 @@ Gestion entièrement au clavier, idéal pour se passer de la souris. [Documentat
 ```bash
 sudo apt install i3
 ```
+
+## Autres Distributions
 
 Vous pouvez également vous tourner vers d'autres distributions, voici un site pouvant vous aider à faire votre choix : 
 
