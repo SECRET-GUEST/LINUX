@@ -1,4 +1,4 @@
-![LINUX](https://img.shields.io/badge/Debian-LINUX-orange)
+![LINUX](https://img.shields.io/badge/UBUNTU-orange)
 ```
 ██╗   ██╗██████╗ ██╗   ██╗███╗   ██╗████████╗██╗   ██╗
 ██║   ██║██╔══██╗██║   ██║████╗  ██║╚══██╔══╝██║   ██║
