@@ -168,7 +168,8 @@ Gestion entièrement au clavier, idéal pour se passer de la souris. [Documentat
 sudo apt install i3
 ```
 
-## Autres Distributions
+
+## Autres Distributions
 
 Vous pouvez également vous tourner vers d'autres distributions, voici un site pouvant vous aider à faire votre choix : 
 
