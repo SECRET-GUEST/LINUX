@@ -183,7 +183,7 @@ sudo apt install i3
 
 ## Vu que vous etes débutant, COMMENCEZ A TOUT PRIX par :
 ### Brain Damage
-1. **Arch** (Tout installer de 0 avec tout déja compilés) - [Site Officiel](https://archlinux.fr/)
+1. **Arch** (Tout installer via un terminal, de 0) - [Site Officiel](https://archlinux.fr/)
 2. **Gentoo** (De 0 en compilant soi-même) - [Site Officiel](https://www.gentoo.org/)
 3. **Linux from Scratch** (Inventer l'os) - [Site Officiel](http://fr.linuxfromscratch.org/)
 
