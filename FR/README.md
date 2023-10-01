@@ -33,6 +33,7 @@ Ubuntu est un excellent point de départ pour ceux qui débutent avec Linux, off
 
 N'hésitez pas à explorer cette page, où vous trouverez des guides, des astuces et des informations utiles pour vous aider à tirer le meilleur parti de votre expérience Ubuntu.
 
+```
             
             .-/+oossssoo+/-.               
         `:+ssssssssssssssssss+:`           
@@ -53,4 +54,5 @@ ossyNMMMNyMMhsssssssssssssshmmmhssssssso
     .ossssssssssssssssssdMMMNysssso.       
       -+sssssssssssssssssyyyssss+-
         `:+ssssssssssssssssss+:`                                   
-            .-/+oossssoo+/-.           
+            .-/+oossssoo+/-.
+```
