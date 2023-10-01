@@ -26,7 +26,7 @@ Pas mal les bzezs
 
 
 
-1. Ouvrez le menu des "Paramètres système" (vous pouvez le trouver en cliquant en haut à droite de votre écran, puis en sélectionnant l'icône en forme d'engrenage, ou en appuyant sur la touche **windows**  puis en écrivant `param...` 
+1. Ouvrez le menu des "Paramètres système" (vous pouvez le trouver en cliquant en haut à droite de votre écran, puis en sélectionnant l'icône en forme d'engrenage, ou en appuyant sur la touche **Super** (windows)  puis en écrivant `param...` 
 2. Cliquez sur "Détails" puis sur "Utilisateurs".
 3. Cliquez sur "Déverrouiller" en haut à droite et entrez votre mot de passe actuel.
 4. Maintenant, cliquez sur votre nom d'utilisateur et vous pourrez changer votre mot de passe.
@@ -35,11 +35,11 @@ Pas mal les bzezs
 
 ## Utilisation Basique de Linux
 
-Linux peut sembler différent de ce que vous avez connu jusqu'à maintenant, notamment si vous venez de Windows. Mais avec un peu de pratique, vous le trouverez tout aussi intuitif et puissant.
+Linux peut sembler différent de ce que vous avez connu jusqu'à maintenant, mais avec un peu de pratique, vous le trouverez tout aussi intuitif et puissant.
 
 ### 1. Mises à jour avec `sudo apt-get update`
 
-La commande `sudo apt-get update` est essentielle pour maintenir votre système à jour. Elle permet de récupérer les informations des dernières versions des paquets disponibles. Pour simplifier cette tâche, un raccourci a été créé. Vous pouvez simplement appuyer sur **Windows + U**  et entrer le mot de passe pour exécuter cette commande.
+La commande `sudo apt-get update` est essentielle pour maintenir votre système à jour. Elle permet de récupérer les informations des dernières versions des paquets disponibles. Pour simplifier cette tâche, un raccourci peut étre créé. Vous pouvez simplement appuyer sur **Super + U**  et entrer le mot de passe pour exécuter cette commande.
 
  [Consultez la section sur les raccourcis pour en savoir plus](#guide-des-raccourcis-sur-ubuntudebian).
 
@@ -53,9 +53,7 @@ Contrairement à Windows, les fichiers ne sont pas exécutables directement sous
 
 En faisant un clic droit sur un fichier ou un dossier, puis en allant dans l'onglet "Scripts", vous pouvez rendre un fichier exécutable ou installer un paquet Debian facilement. 
 
- ou appuyez sur **Windows + A pour ouvrir le menu des applications** puis cherchez dans "settings". Le logiciel s'ouvre sur une page Google, c'est normal.
-
-Pour ouvrir votre **navigateur internet**, appuyez simplement sur la touche **Insert** (à côté de la touche "Impr Écran"). Vous pouvez personnaliser ce genre de raccourcis à votre guise.
+ ou appuyez sur **Super + A pour ouvrir le menu des applications** puis cherchez dans "settings". Le logiciel s'ouvre sur une page Google, c'est normal.
 
  [Consultez la section sur les raccourcis pour en savoir plus](#guide-des-raccourcis-sur-ubuntudebian).
 
@@ -170,22 +168,25 @@ Gestion entièrement au clavier, idéal pour se passer de la souris. [Documentat
 sudo apt install i3
 ```
 
-## Distributions Orientées Terminal
 
+## Vu que vous avez lu jusqu'ici, je suppose que vous etes un débutant, dans ce cas je vous recommande vivement de supprimer votre clé ubuntu et de commencer par d'autre distributions : 
 ### Terminal First
 1. **Raspberry Pi OS Lite** (pour Raspberry Pi) - [Site Officiel](https://www.raspberrypi.org/software/operating-systems/)
 2. **Slackware** (Stabilité et simplicité) - [Site Officiel](https://www.slackware.com/getslack/)
 3. **CentOS Stream** (Développement et déploiement d'applications, version rolling-release de CentOS) - [Site Officiel](https://www.centos.org/download/)
 
+## Vu que vous etes débutant vous pourriez aussi apprécier : 
 ### Cyber Sec
-1. **QubeOS** (Virtualisation de tout) - [Site Officiel](https://www.qubes-os.org/)
+1. **QubeOS** (Tout en sandbox) - [Site Officiel](https://www.qubes-os.org/)
 2. **Kali Linux** (Sécurité offensive) - [Site Officiel](https://www.kali.org/get-kali/#kali-platforms)
 3. **Black Arch** (Pas fait pour vous) - [Site Officiel](https://blackarch.org/)
 
+## Vu que vous etes débutant, laissez vous séduire par :
 ### Brain Damage
 1. **Arch** (Tout installé de 0 de fichiers compilés via une doc immonde) - [Site Officiel](https://archlinux.fr/)
 2. **Gentoo** (De 0 en compilant soi-même via une doc extrêmement dégueulasse) - [Site Officiel](https://www.gentoo.org/)
-3. **Linux from Scratch** (Tout de 0 depuis un livre) - [Site Officiel](http://fr.linuxfromscratch.org/)
+3. **Linux from Scratch** (Inventer un os depuis un guide) - [Site Officiel](http://fr.linuxfromscratch.org/)
+
 
 ## Raccourcis
 Si vous optez pour un autre environnement que GNOME, ce guide ne vous sera d'aucune utilité.
