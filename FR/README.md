@@ -37,7 +37,7 @@ N'hésitez pas à explorer cette page, où vous trouverez des guides, des astuce
             
             .-/+oossssoo+/-.               
         `:+ssssssssssssssssss+:`           
-      -+ssssssssssssssssssyyssss+-         OS: Ubuntu 22.04.3 LTS x86_64 
+      -+ssssssssssssssssssyyssss+-     
     .ossssssssssssssssssdMMMNysssso.       
    /ssssssssssshdmmNNmmyNMMMMhssssss/      
   +ssssssssshmydMMMMMMMNddddyssssssss+     
