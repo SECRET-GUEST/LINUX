@@ -181,11 +181,13 @@ sudo apt install i3
 2. **Kali Linux** (Sécurité offensive) - [Site Officiel](https://www.kali.org/get-kali/#kali-platforms)
 3. **Black Arch** (Pas fait pour vous) - [Site Officiel](https://blackarch.org/)
 
-## Vu que vous etes débutant, laissez vous séduire par :
+## Vu que vous etes débutant, COMMENCEZ A TOUT PRIX par :
 ### Brain Damage
-1. **Arch** (Tout installé de 0 de fichiers compilés via une doc immonde) - [Site Officiel](https://archlinux.fr/)
-2. **Gentoo** (De 0 en compilant soi-même via une doc extrêmement dégueulasse) - [Site Officiel](https://www.gentoo.org/)
-3. **Linux from Scratch** (Inventer un os depuis un guide) - [Site Officiel](http://fr.linuxfromscratch.org/)
+1. **Arch** (Tout installer de 0 avec tout déja compilés) - [Site Officiel](https://archlinux.fr/)
+2. **Gentoo** (De 0 en compilant soi-même) - [Site Officiel](https://www.gentoo.org/)
+3. **Linux from Scratch** (Inventer l'os) - [Site Officiel](http://fr.linuxfromscratch.org/)
+
+![image](https://github.com/SECRET-GUEST/LINUX/assets/92639080/3545f54c-10fb-4b60-ad0b-4ca9b21fb710)
 
 
 ## Raccourcis
