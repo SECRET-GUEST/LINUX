@@ -168,20 +168,22 @@ Gestion entièrement au clavier, idéal pour se passer de la souris. [Documentat
 sudo apt install i3
 ```
 
+Vous pouvez également vous tourner vers d'autres distributions, voici un site pouvant vous aider à faire votre choix : 
 
-## Vu que vous avez lu jusqu'ici, je suppose que vous etes un débutant, dans ce cas je vous recommande vivement de supprimer votre clé ubuntu et de commencer par d'autre distributions : 
+https://distrochooser.de/fr/
+
+Sinon voici également d'autres distributions moins connue mais convenant parfaitement à des débutants :
+
 ### Terminal First
 1. **Raspberry Pi OS Lite** (pour Raspberry Pi) - [Site Officiel](https://www.raspberrypi.org/software/operating-systems/)
 2. **Slackware** (Stabilité et simplicité) - [Site Officiel](https://www.slackware.com/getslack/)
 3. **CentOS Stream** (Développement et déploiement d'applications, version rolling-release de CentOS) - [Site Officiel](https://www.centos.org/download/)
 
-## Vu que vous etes débutant vous pourriez aussi apprécier : 
 ### Cyber Sec
 1. **QubeOS** (Tout en sandbox) - [Site Officiel](https://www.qubes-os.org/)
 2. **Kali Linux** (Sécurité offensive) - [Site Officiel](https://www.kali.org/get-kali/#kali-platforms)
 3. **Black Arch** (Pas fait pour vous) - [Site Officiel](https://blackarch.org/)
 
-## Vu que vous etes débutant, COMMENCEZ A TOUT PRIX par :
 ### Brain Damage
 1. **Arch** (Tout installer via un terminal, de 0) - [Site Officiel](https://archlinux.fr/)
 2. **Gentoo** (De 0 en compilant soi-même) - [Site Officiel](https://www.gentoo.org/)
