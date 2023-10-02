@@ -17,10 +17,15 @@
 2. [Mise à jour du système](#mise-à-jour-du-système)
 3. [Installation de logiciels et Paquets Debian](#installation-de-logiciels-et-paquets-debian)
 4. [Navigation dans le système de fichiers](#navigation-dans-le-système-de-fichiers)
-5. [Sécurité du système](#sécurité-du-système)
-   - [Sécurité du mot de passe root](#sécurité-du-mot-de-passe-root)
-   - [Pare-feu et outils basique de sécurité](#pare-feu-et-outils-de-sécurité)
-   - [Mesures de sécurité avancées](#mesures-de-sécurité-avancées)
+
+## [Guide sur la cybersécurité du système](#guide-sur-la-cybersécurité-du-système)
+
+1. [Sécurité du mot de passe root](#sécurité-du-mot-de-passe-root)
+2. [Sécurisation du DNS avec Quad9](#sécurisation-du-dns-avec-quad9)
+3. [Activation des Mises à Jour Automatiques](#activation-des-mises-à-jour-automatiques)
+4. [Autres Astuces de Sécurité](#autres-astuces-de-sécurité)
+5. [Pare-feu et outils de sécurité](#pare-feu-et-outils-de-sécurité)
+6. [Mesures de sécurité avancées](#mesures-de-sécurité-avancées)
 
 
 ## [Guide des Raccourcis sur Ubuntu/Debian](#guide-des-raccourcis-sur-ubuntudebian)
@@ -120,12 +125,15 @@ Si vous optez pour un autre environnement que GNOME, ce guide ne vous sera d'auc
 
 
 
----
+
+
+
+
+
 
 ---
-
 ---
-
+---
 ```markdown
  _  _ ____ _  _ _ ____ ____ ___ ____ ____ ____ 
  |\ | |__| |  | | | __ |__|  |  |  | |__/ [__  
@@ -179,6 +187,16 @@ xdg-mime default org.gnome.Nautilus.desktop inode/directory
 ## Raccourcis
 
 Si vous choisissez un autre navigateur que Nautilus, la section sur les raccourcis ne vous sera pas utile.
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -237,19 +255,74 @@ Maîtrisez les commandes de base pour la navigation :
 - `pwd` : affiche le répertoire courant.
 - `mkdir [nom_du_dossier]` : crée un nouveau dossier.
 
-## Sécurité du système
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+---
+---
+---
+```markdown
+____ _   _ ___  ____ ____ ____ ____ ____ 
+|     \_/  |__] |___ |__/ [__  |___ |    
+|___   |   |__] |___ |  \ ___] |___ |___ 
+```
+[Retour au Sommaire](#sommaire) 
+
+# Guide sur la cybersécurité du système
+
+La cybersécurité est essentielle pour protéger les systèmes, réseaux et programmes informatiques contre les attaques numériques. Elle vise à protéger l'intégrité, la confidentialité, et la disponibilité des données. Dans ce guide, nous explorerons diverses mesures, outils et astuces pour renforcer la sécurité de votre système Ubuntu.
 
 ### Sécurité du mot de passe root
-
-Désactivez le compte root pour une sécurité accrue :
-```
+Pour renforcer la sécurité de votre système, désactivez le compte root :
+```sh
 sudo passwd -l root
 sudo visudo
 ```
 Commentez la ligne de root :
-```
+```sh
 # root   ALL=(ALL:ALL) ALL
 ```
+
+### Sécurisation du DNS avec Quad9
+Changer vos serveurs DNS à ceux de Quad9, qui bloque l'accès aux sites malveillants connus.
+```sh
+sudo nano /etc/resolv.conf
+```
+Remplacez les serveurs DNS existants par :
+```sh
+nameserver 9.9.9.9
+nameserver 149.112.112.112
+```
+
+### Activation des Mises à Jour Automatiques
+Mettre en place les mises à jour automatiques pour toujours bénéficier des derniers correctifs de sécurité :
+```sh
+sudo apt install unattended-upgrades
+sudo dpkg-reconfigure unattended-upgrades
+```
+Sélectionnez "<Yes>" lorsqu'il vous sera demandé d'activer les mises à jour automatiques.
+
+### Autres Astuces de Sécurité
+- **Audit régulier du système :** Exécutez régulièrement des outils d'audit de sécurité tels que Lynis pour identifier et corriger les vulnérabilités.
+- **Restriction des privilèges :** Utilisez le principe du moindre privilège et n'accordez les droits d'administration qu'aux utilisateurs qui en ont besoin.
+- **Méthodes d'authentification robustes :** Mettez en place une authentification à deux facteurs et utilisez des clés SSH pour les connexions à distance.
+
+### Pare-feu et outils de sécurité
+
+La sécurisation de votre système est cruciale, et Ubuntu propose plusieurs outils pour vous aider dans cette tâche...
 
 
 ### Pare-feu et outils de sécurité
@@ -388,11 +461,8 @@ Plus d'informations : [AIDE Manual](https://aide.github.io/manual.html)
 
 
 ---
-
 ---
-
 ---
-
 ```markdown
  ____ ____ ____ ____ ____ _  _ ____ ____ _ ____ 
  |__/ |__| |    |    |  | |  | |__/ |    | [__  
@@ -489,11 +559,8 @@ Bref, c'est plus intéressant d'appuyer sur 2 touches pour faire tout ça **Wind
 
 
 ---
-
 ---
-
 ---
-
 ```markdown
  ____ ___  ___  _    _ ____ ____ ___ _ ____ _  _ ____ 
  |__| |__] |__] |    | |    |__|  |  | |  | |\ | [__  
