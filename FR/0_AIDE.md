@@ -20,7 +20,8 @@
 5. [Sécurité du système](#sécurité-du-système)
    - [Sécurité du mot de passe root](#sécurité-du-mot-de-passe-root)
    - [Pare-feu et outils basique de sécurité](#pare-feu-et-outils-de-sécurité)
-   
+   - [Mesures de sécurité avancées](#mesures-de-sécurité-avancées)
+
 
 ## [Guide des Raccourcis sur Ubuntu/Debian](#guide-des-raccourcis-sur-ubuntudebian)
 
@@ -301,17 +302,93 @@ sudo clamscan -r /home
 | Mises à jour régulières de la base de données de virus. | Performances système possiblement affectées pendant les scans. |
 
 #### Autres mesures de sécurité
+Bien sûr, voici une version révisée avec des tableaux pour chaque outil et des liens vers la documentation appropriée :
 
-- **Mises à jour régulières :** Gardez votre système et vos applications à jour pour bénéficier des derniers correctifs de sécurité.
-- **Installation de logiciels de sources fiables :** Privilégiez les logiciels disponibles dans les dépôts officiels d'Ubuntu et évitez les logiciels de sources inconnues ou non fiables.
-- **Configuration minimale des services :** Désactivez les services inutiles pour réduire les points d'entrée potentiels pour les attaquants.
-- **Changement régulier des mots de passe :** Optez pour des mots de passe forts et changez-les régulièrement.
-- **Utilisation de SELinux ou AppArmor :** Ces outils fournissent des mécanismes de contrôle d'accès obligatoires, protégeant contre les logiciels malveillants et les attaques.
-- **Sauvegardes régulières :** Réalisez régulièrement des sauvegardes de vos données importantes.
+### Mesures de sécurité avancées
 
-J'espère que cette version avec tableaux est plus claire et structurée selon vos attentes.
+#### Chiffrement complet du disque
 
+Protégez vos données en cas de vol physique de l'ordinateur en utilisant le chiffrement du disque lors de l'installation d'Ubuntu. Pour plus d'informations, consultez la [documentation Ubuntu](https://help.ubuntu.com/community/Full_Disk_Encryption_Howto).
 
+#### Firejail
+
+Firejail est un outil de sandboxing qui permet d'isoler les applications.
+
+Pour installer Firejail :
+```sh
+sudo apt install firejail
+```
+
+| Avantages | Inconvénients |
+|-----------|---------------|
+| Isolation efficace des applications. | Peut être complexe à configurer. |
+| Réduit les risques d'attaque réseau. | |
+
+Plus d'informations : [Firejail Documentation](https://firejail.wordpress.com/documentation-2/)
+
+#### Lynis
+
+Lynis est un outil d'audit de sécurité pour les systèmes Unix.
+
+Pour installer et utiliser Lynis :
+```sh
+sudo apt install lynis
+sudo lynis audit system
+```
+
+| Avantages | Inconvénients |
+|-----------|---------------|
+| Fournit des recommandations d'amélioration. | Les résultats nécessitent une interprétation et une analyse. |
+| Mises à jour régulières. | |
+
+Plus d'informations : [Lynis Documentation](https://cisofy.com/documentation/lynis/get-started/)
+
+#### OpenVAS
+
+OpenVAS est un framework d'analyse de vulnérabilités.
+
+Pour installer et utiliser OpenVAS :
+```sh
+sudo apt install openvas
+sudo openvas-setup
+```
+
+| Avantages | Inconvénients |
+|-----------|---------------|
+| Identification de nombreuses vulnérabilités de sécurité. | Complexité et durée de la configuration et de l'analyse. |
+| Scans approfondis. | |
+
+Plus d'informations : [OpenVAS Documentation](https://docs.greenbone.net/)
+
+#### Grsecurity
+
+Grsecurity est une série de patches pour le noyau Linux visant à améliorer sa sécurité.
+
+| Avantages | Inconvénients |
+|-----------|---------------|
+| Protection renforcée du kernel. | Peut être difficile à installer et à configurer. |
+| Renforce l'isolation entre les utilisateurs. | |
+
+Plus d'informations : [Grsecurity Documentation](https://en.wikibooks.org/wiki/Grsecurity)
+
+#### AIDE (Advanced Intrusion Detection Environment)
+
+AIDE est un outil de vérification de l'intégrité des fichiers.
+
+Pour installer et utiliser AIDE :
+```sh
+sudo apt install aide
+sudo aideinit
+```
+
+| Avantages | Inconvénients |
+|-----------|---------------|
+| Détecte les modifications non autorisées de fichiers. | Peut générer de faux positifs. |
+| Personnalisable. | Nécessite une configuration soigneuse. |
+
+Plus d'informations : [AIDE Manual](https://aide.github.io/manual.html)
+
+En suivant ces recommandations et en consultant les ressources documentaires, vous pourrez approfondir vos connaissances et renforcer la sécurité de votre système.
 
 ---
 
