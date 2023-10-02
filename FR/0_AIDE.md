@@ -52,7 +52,7 @@
 
 ---
 
-```
+```markdown
  _ _ _ ____ ____ _  _ ____ ___  ____ ____ ____ 
  | | | |  | |__/ |_/  [__  |__] |__| |    |___ 
  |_|_| |__| |  \ | \_ ___] |    |  | |___ |___ 
@@ -127,7 +127,7 @@ Si vous optez pour un autre environnement que GNOME, ce guide ne vous sera d'auc
 
 ---
 
-```
+```markdown
  _  _ ____ _  _ _ ____ ____ ___ ____ ____ ____ 
  |\ | |__| |  | | | __ |__|  |  |  | |__/ [__  
  | \| |  |  \/  | |__] |  |  |  |__| |  \ ___] 
@@ -186,7 +186,7 @@ Si vous choisissez un autre navigateur que Nautilus, la section sur les raccourc
 ---
 ---
 ---
-```
+```markdown
 ___  ____ ____ _ ____ ____ 
 |__] |__| [__  | |    [__  
 |__] |  | ___] | |___ ___] 
