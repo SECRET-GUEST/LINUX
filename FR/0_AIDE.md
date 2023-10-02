@@ -328,15 +328,34 @@ Commentez la ligne de root :
 ```
 
 ### Sécurisation du DNS avec Quad9
-Changer vos serveurs DNS à ceux de Quad9, qui bloque l'accès aux sites malveillants connus.
+
+Pour sécuriser votre DNS avec Quad9 sur Ubuntu, vous pouvez soit utiliser l'interface graphique (GUI), soit modifier manuellement les fichiers de configuration (déconseillé).
+
+#### Via l'Interface Utilisateur Graphique (GUI) :
+
+1. Appuyez sur la touche `Super` (touche Windows) et tapez `Réseau` ou `Network` dans la recherche.
+2. Sélectionnez votre connexion actuelle (Wi-Fi ou Ethernet) dans les paramètres du réseau.
+
+Ensuite, configurez les paramètres DNS comme suit:
+
+| Méthode            | IPv4                  | IPv6              |
+|--------------------|-----------------------|-------------------|
+| Automatique (DHCP) | 9.9.9.9, 149.112.112.112 | 2620:fe::fe, 2620:fe::9 |
+
+
+#### Méthode Manuelle (déconseillée) :
+
+La modification directe du fichier `/etc/resolv.conf` est déconseillée car il est géré par `systemd-resolved` et peut être réinitialisé automatiquement en plus de provoquer des conflits avec le gestionnaire de réseau d'Ubuntu et doit être effectuée avec prudence.
+
 ```sh
 sudo nano /etc/resolv.conf
 ```
-Remplacez les serveurs DNS existants par :
+Si nécessaire, remplacez les serveurs DNS par:
 ```sh
 nameserver 9.9.9.9
 nameserver 149.112.112.112
 ```
+
 
 ### Activation des Mises à Jour Automatiques
 Mettre en place les mises à jour automatiques pour toujours bénéficier des derniers correctifs de sécurité :
