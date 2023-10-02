@@ -395,7 +395,7 @@ RKHunter est un scanner de rootkits qui aide à détecter la présence de rootki
 Pour installer et utiliser RKHunter :
 ```sh
 sudo apt install rkhunter
-sudo rkhunter --check
+sudo rkhunter --check --skip-keypress
 ```
 
 | Avantages | Inconvénients |
