@@ -1,17 +1,3 @@
-# Log 0 : Terminal
-
- Ce guide est ici pour vous aider à naviguer et à personnaliser votre environnement Linux. Il est conçu pour répondre aux questions courantes et vous guider à travers divers aspects de votre système. 
-
----
-
----
-
----
-
----
-
----
-
 # SOMMAIRE
 
 ## [Guide des distributions Linux](#guide-des-environnements-de-bureau-pour-ubuntudebian)
