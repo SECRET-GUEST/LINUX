@@ -301,9 +301,6 @@ sudo clamscan -r /home
 | Open source et gratuit. | Moins efficace contre les menaces zero-day par rapport aux solutions payantes. |
 | Mises à jour régulières de la base de données de virus. | Performances système possiblement affectées pendant les scans. |
 
-#### Autres mesures de sécurité
-Bien sûr, voici une version révisée avec des tableaux pour chaque outil et des liens vers la documentation appropriée :
-
 ### Mesures de sécurité avancées
 
 #### Chiffrement complet du disque
