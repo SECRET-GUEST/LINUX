@@ -249,28 +249,67 @@ Commentez la ligne de root :
 ```
 # root   ALL=(ALL:ALL) ALL
 ```
+D'accord, je vais reformuler le paragraphe avec des tableaux pour chaque outil de sécurité :
 
 ### Pare-feu et outils de sécurité
 
-Activez le pare-feu UFW et apprenez à utiliser des outils tels que RKHunter et ClamAV.
+La sécurisation de votre système est cruciale, et Ubuntu propose plusieurs outils pour vous aider dans cette tâche. Bien que ces outils ne soient pas obligatoires, leur utilisation peut grandement contribuer à la protection de votre système.
 
-- Activez UFW :
-```
+#### UFW (Uncomplicated Firewall)
+
+UFW est un pare-feu simple et intuitif, idéal pour ceux qui débutent avec la gestion de pare-feu.
+
+Pour activer UFW :
+```sh
 sudo ufw enable
 ```
 
-- Installez et utilisez RKHunter :
-```
+| Avantages | Inconvénients |
+|-----------|---------------|
+| Facilité d'utilisation. | Moins de fonctionnalités avancées. |
+| Bonne documentation et support communautaire. | |
+
+#### RKHunter (Rootkit Hunter)
+
+RKHunter est un scanner de rootkits qui aide à détecter la présence de rootkits sur votre système.
+
+Pour installer et utiliser RKHunter :
+```sh
 sudo apt install rkhunter
 sudo rkhunter --check
 ```
 
-- Installez et utilisez ClamAV :
-```
+| Avantages | Inconvénients |
+|-----------|---------------|
+| Peut détecter de nombreux rootkits, backdoors et exploits possibles. | Faux positifs possibles, nécessitant une analyse plus approfondie. |
+| Mises à jour régulières de la base de données de rootkits. | |
+
+#### ClamAV
+
+ClamAV est un moteur antivirus pour Linux.
+
+Pour installer et utiliser ClamAV :
+```sh
 sudo apt install clamav clamav-daemon
 sudo freshclam
 sudo clamscan -r /home
 ```
+
+| Avantages | Inconvénients |
+|-----------|---------------|
+| Open source et gratuit. | Moins efficace contre les menaces zero-day par rapport aux solutions payantes. |
+| Mises à jour régulières de la base de données de virus. | Performances système possiblement affectées pendant les scans. |
+
+#### Autres mesures de sécurité
+
+- **Mises à jour régulières :** Gardez votre système et vos applications à jour pour bénéficier des derniers correctifs de sécurité.
+- **Installation de logiciels de sources fiables :** Privilégiez les logiciels disponibles dans les dépôts officiels d'Ubuntu et évitez les logiciels de sources inconnues ou non fiables.
+- **Configuration minimale des services :** Désactivez les services inutiles pour réduire les points d'entrée potentiels pour les attaquants.
+- **Changement régulier des mots de passe :** Optez pour des mots de passe forts et changez-les régulièrement.
+- **Utilisation de SELinux ou AppArmor :** Ces outils fournissent des mécanismes de contrôle d'accès obligatoires, protégeant contre les logiciels malveillants et les attaques.
+- **Sauvegardes régulières :** Réalisez régulièrement des sauvegardes de vos données importantes.
+
+J'espère que cette version avec tableaux est plus claire et structurée selon vos attentes.
 
 
 
