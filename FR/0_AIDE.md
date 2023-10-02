@@ -5,14 +5,12 @@
 1. [Environnements de Bureau Alternatifs](#environnements-de-bureau-alternatifs)
 2. [Autres Distributions](#autres-distributions) 
 
----
 
-##  [Guide des Navigateurs de Fichiers pour Ubuntu/Debian](#guide-des-navigateurs-de-fichiers-pour-ubuntudebian)
+## [Guide des Navigateurs de Fichiers pour Ubuntu/Debian](#guide-des-navigateurs-de-fichiers-pour-ubuntudebian)
 
 1. [Changer de Navigateur de Fichiers](#changer-de-navigateur-de-fichiers)
 2. [Comparaison des Navigateurs](#comparaison-des-navigateurs)
 
----
 ## [Guide des bases de Linux](#guide-des-bases-de-linux)
 
 1. [Introduction et Ressources](#introduction-et-ressources)
@@ -25,7 +23,6 @@
    - [Sécurité du mot de passe root](#sécurité-du-mot-de-passe-root)
    - [Pare-feu et outils de sécurité](#pare-feu-et-outils-de-sécurité)
    
----
 
 ## [Guide des Raccourcis sur Ubuntu/Debian](#guide-des-raccourcis-sur-ubuntudebian)
 
@@ -33,7 +30,6 @@
 2. [Menu Contextuel de Nautilus](#menu-contextuel-de-nautilus)
 3. [Exécuter des Scripts via le Menu Contextuel](#exécuter-des-scripts-via-le-menu-contextuel)
 
----
 
 ## [Guide d'Installation d'Applications sur Ubuntu/Debian](#guide-dinstallation-dapplications-sur-ubuntudebian)
 
