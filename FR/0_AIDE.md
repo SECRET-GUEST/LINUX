@@ -12,93 +12,36 @@
 
 ---
 
+# SOMMAIRE
 
-
-## Mot de Passe
-
-Votre mot de passe est essentiel pour la sécurité de votre système. Si vous avez besoin de le changer, voici comment faire :
-
-Mot de passe actuel : 
-
-```
-Pas mal les bzezs
-```
-
-
-
-1. Ouvrez le menu des "Paramètres système" (vous pouvez le trouver en cliquant en haut à droite de votre écran, puis en sélectionnant l'icône en forme d'engrenage, ou en appuyant sur la touche **Super** (windows)  puis en écrivant `param...` 
-2. Cliquez sur "Détails" puis sur "Utilisateurs".
-3. Cliquez sur "Déverrouiller" en haut à droite et entrez votre mot de passe actuel.
-4. Maintenant, cliquez sur votre nom d'utilisateur et vous pourrez changer votre mot de passe.
-
-
-
-## Utilisation Basique de Linux
-
-Linux peut sembler différent de ce que vous avez connu jusqu'à maintenant, mais avec un peu de pratique, vous le trouverez tout aussi intuitif et puissant.
-
-### 1. Mises à jour avec `sudo apt-get update`
-
-La commande `sudo apt-get update` est essentielle pour maintenir votre système à jour. Elle permet de récupérer les informations des dernières versions des paquets disponibles. Pour simplifier cette tâche, un raccourci peut étre créé. Vous pouvez simplement appuyer sur **Super + U**  et entrer le mot de passe pour exécuter cette commande.
-
- [Consultez la section sur les raccourcis pour en savoir plus](#guide-des-raccourcis-sur-ubuntudebian).
-
-### 2. Exécution de Fichiers
-
-Contrairement à Windows, les fichiers ne sont pas exécutables directement sous Linux. Cela est dû à des politiques de sécurité qui aident à protéger votre système contre l'exécution de fichiers malveillants. Pour rendre un fichier exécutable, il y a quelques étapes supplémentaires à suivre. [Plus de détails sont disponibles dans la section sur les applications](#guide-dinstallation-dapplications-sur-ubuntudebian).
-
-
-
-### 3. Accès à Internet et raccourcis clavier
-
-En faisant un clic droit sur un fichier ou un dossier, puis en allant dans l'onglet "Scripts", vous pouvez rendre un fichier exécutable ou installer un paquet Debian facilement. 
-
- ou appuyez sur **Super + A pour ouvrir le menu des applications** puis cherchez dans "settings". Le logiciel s'ouvre sur une page Google, c'est normal.
-
- [Consultez la section sur les raccourcis pour en savoir plus](#guide-des-raccourcis-sur-ubuntudebian).
-
-
-
-Maintenant, vous pouvez explorer le guide. Ci-dessous, vous trouverez un sommaire avec des liens vers différentes sections. Vous pouvez appuyer sur **CTRL + Clic** pour naviguer entre les liens dans le sommaire. Bonne exploration 
-
-
-
----
-
----
-
----
-
-## SOMMAIRE
-
-1. [Guide des distributions Linux](#guide-des-environnements-de-bureau-pour-ubuntudebian)
-2. [Guide des Navigateurs de Fichiers pour Ubuntu/Debian](#guide-des-navigateurs-de-fichiers-pour-ubuntudebian)
-3. [Guide des Raccourcis sur Ubuntu/Debian](#guide-des-raccourcis-sur-ubuntudebian)
-4. [Guide d'Installation d'Applications sur Ubuntu/Debian](#guide-dinstallation-dapplications-sur-ubuntudebian)
-
----
-
----
-
----
-
-
-
-## Guide des distributions Linux
+## [Guide des distributions Linux](#guide-des-environnements-de-bureau-pour-ubuntudebian)
 
 1. [Environnements de Bureau Alternatifs](#environnements-de-bureau-alternatifs)
 2. [Autres Distributions](#autres-distributions) 
 
+---
 
-
-## Guide des Navigateurs de Fichiers 
+##  [Guide des Navigateurs de Fichiers pour Ubuntu/Debian](#guide-des-navigateurs-de-fichiers-pour-ubuntudebian)
 
 1. [Changer de Navigateur de Fichiers](#changer-de-navigateur-de-fichiers)
 2. [Comparaison des Navigateurs](#comparaison-des-navigateurs)
 
 ---
+## [Guide des bases de Linux](#guide-des-bases-de-linux)
 
-## Guide des Raccourcis 
+1. [Introduction et Ressources](#introduction-et-ressources)
+2. [Mise à jour du système](#mise-à-jour-du-système)
+3. [Installation de logiciels et Paquets Debian](#installation-de-logiciels-et-paquets-debian)
+   - [Installation de Neofetch et Tree](#installation-de-neofetch-et-tree)
+   - [Utilisation de Tree](#utilisation-de-tree)
+4. [Navigation dans le système de fichiers](#navigation-dans-le-système-de-fichiers)
+5. [Sécurité du système](#sécurité-du-système)
+   - [Sécurité du mot de passe root](#sécurité-du-mot-de-passe-root)
+   - [Pare-feu et outils de sécurité](#pare-feu-et-outils-de-sécurité)
+   
+---
+
+## [Guide des Raccourcis sur Ubuntu/Debian](#guide-des-raccourcis-sur-ubuntudebian)
 
 1. [Raccourcis Clavier](#raccourcis-clavier)
 2. [Menu Contextuel de Nautilus](#menu-contextuel-de-nautilus)
@@ -106,7 +49,7 @@ Maintenant, vous pouvez explorer le guide. Ci-dessous, vous trouverez un sommair
 
 ---
 
-## Guide d'Installation d'Applications
+## [Guide d'Installation d'Applications sur Ubuntu/Debian](#guide-dinstallation-dapplications-sur-ubuntudebian)
 
 1. [Créer une Application sur le Bureau ou dans le Menu des Applications](#créer-une-application-sur-le-bureau-ou-dans-le-menu-des-applications)
 2. [Installer des Paquets `.deb`](#installer-des-paquets-deb)
@@ -117,17 +60,11 @@ Maintenant, vous pouvez explorer le guide. Ci-dessous, vous trouverez un sommair
 
 
 
+---
 
+---
 
-
-
-
-
-
-
-
-
-----
+---
 
 ---
 
@@ -208,7 +145,7 @@ Si vous optez pour un autre environnement que GNOME, ce guide ne vous sera d'auc
 
 ---
 
-```markdown
+```
  _  _ ____ _  _ _ ____ ____ ___ ____ ____ ____ 
  |\ | |__| |  | | | __ |__|  |  |  | |__/ [__  
  | \| |  |  \/  | |__] |  |  |  |__| |  \ ___] 
@@ -263,6 +200,97 @@ xdg-mime default org.gnome.Nautilus.desktop inode/directory
 Si vous choisissez un autre navigateur que Nautilus, la section sur les raccourcis ne vous sera pas utile.
 
 
+
+---
+---
+---
+```
+___  ____ ____ _ ____ ____ 
+|__] |__| [__  | |    [__  
+|__] |  | ___] | |___ ___] 
+```
+[Retour au Sommaire](#sommaire) 
+
+# Guide des bases de Linux
+
+## Introduction
+
+Bienvenue dans le monde de Linux et d'Ubuntu. Avant de commencer, assurez-vous de consulter la [documentation officielle d'Ubuntu](https://ubuntu.com/tutorials) et les [forums d'Ubuntu](https://ubuntuforums.org/) pour des ressources et des supports supplémentaires.
+
+## Mise à jour du système
+
+La première étape consiste à mettre à jour votre système. Ouvrez le terminal et exécutez :
+```
+sudo apt update && sudo apt upgrade
+```
+
+## Installation de logiciels : Préférez les paquets Debian
+
+Pour installer des logiciels, il est conseillé d'utiliser les paquets Debian plutôt que Snap. Pour plus de détails, consultez le [Guide d'Installation d'Applications sur Ubuntu/Debian](#guide-dinstallation-dapplications-sur-ubuntudebian).
+
+### Installation de Neofetch et Tree
+```
+sudo apt install neofetch tree
+neofetch
+```
+
+### Utilisation de Tree
+Après l'installation de `tree`, vous pouvez visualiser la structure de vos répertoires de la manière suivante :
+```
+tree [nom_du_dossier]
+```
+Cela affichera une structure arborescente des répertoires et sous-répertoires, par exemple :
+```
+.
+├── Documents
+│   └── file1.txt
+└── Pictures
+    └── photo.jpg
+```
+
+## Navigation dans le système de fichiers
+
+Maîtrisez les commandes de base pour la navigation :
+- `ls` : liste les fichiers et dossiers.
+- `cd [nom_du_dossier]` : change de répertoire.
+- `pwd` : affiche le répertoire courant.
+- `mkdir [nom_du_dossier]` : crée un nouveau dossier.
+
+## Sécurité du système
+
+### Sécurité du mot de passe root
+
+Désactivez le compte root pour une sécurité accrue :
+```
+sudo passwd -l root
+sudo visudo
+```
+Commentez la ligne de root :
+```
+# root   ALL=(ALL:ALL) ALL
+```
+
+### Pare-feu et outils de sécurité
+
+Activez le pare-feu UFW et apprenez à utiliser des outils tels que RKHunter et ClamAV.
+
+- Activez UFW :
+```
+sudo ufw enable
+```
+
+- Installez et utilisez RKHunter :
+```
+sudo apt install rkhunter
+sudo rkhunter --check
+```
+
+- Installez et utilisez ClamAV :
+```
+sudo apt install clamav clamav-daemon
+sudo freshclam
+sudo clamscan -r /home
+```
 
 
 
