@@ -250,7 +250,7 @@ Commentez la ligne de root :
 ```
 # root   ALL=(ALL:ALL) ALL
 ```
-D'accord, je vais reformuler le paragraphe avec des tableaux pour chaque outil de sécurité :
+
 
 ### Pare-feu et outils de sécurité
 
@@ -385,7 +385,7 @@ sudo aideinit
 
 Plus d'informations : [AIDE Manual](https://aide.github.io/manual.html)
 
-En suivant ces recommandations et en consultant les ressources documentaires, vous pourrez approfondir vos connaissances et renforcer la sécurité de votre système.
+
 
 ---
 
