@@ -16,12 +16,10 @@
 1. [Introduction et Ressources](#introduction-et-ressources)
 2. [Mise à jour du système](#mise-à-jour-du-système)
 3. [Installation de logiciels et Paquets Debian](#installation-de-logiciels-et-paquets-debian)
-   - [Installation de Neofetch et Tree](#installation-de-neofetch-et-tree)
-   - [Utilisation de Tree](#utilisation-de-tree)
 4. [Navigation dans le système de fichiers](#navigation-dans-le-système-de-fichiers)
 5. [Sécurité du système](#sécurité-du-système)
    - [Sécurité du mot de passe root](#sécurité-du-mot-de-passe-root)
-   - [Pare-feu et outils de sécurité](#pare-feu-et-outils-de-sécurité)
+   - [Pare-feu et outils basique de sécurité](#pare-feu-et-outils-de-sécurité)
    
 
 ## [Guide des Raccourcis sur Ubuntu/Debian](#guide-des-raccourcis-sur-ubuntudebian)
