@@ -249,8 +249,11 @@ Cela affichera une structure arborescente des répertoires et sous-répertoires,
 
 ## Navigation dans le système de fichiers
 
-Maîtrisez les commandes de base pour la navigation :
-Bien sûr, voici une liste plus complète de commandes utiles pour la navigation et la gestion des fichiers dans un système Linux :
+
+Maîtriser les commandes de base pour la navigation et la gestion de fichiers est crucial dans un environnement Linux. Vous trouverez ci-dessous une liste de commandes essentielles qui vous aideront à travailler efficacement dans ce système. 
+
+Ne vous laissez pas intimider par la longueur de cette liste ! Chaque commande a son utilité et, avec le temps, vous vous retrouverez à les utiliser fréquemment. Si vous débutez, ne vous inquiétez pas de mémoriser toutes ces commandes immédiatement. 
+
 
 - `ls` : Liste les fichiers et dossiers du répertoire courant.
    - Options utiles :
@@ -291,13 +294,7 @@ Bien sûr, voici une liste plus complète de commandes utiles pour la navigation
 
 En vous familiarisant avec ces commandes, vous pourrez naviguer et gérer vos fichiers et dossiers efficacement dans un environnement Linux.
 
-
-
-
-
-
-
-
+Revenez à ce guide quand vous en avez besoin, et vous constaterez que l'utilisation de ces commandes deviendra une seconde nature.
 
 
 
