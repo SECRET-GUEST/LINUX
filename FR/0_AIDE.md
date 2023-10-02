@@ -322,11 +322,6 @@ Sélectionnez "<Yes>" lorsqu'il vous sera demandé d'activer les mises à jour a
 
 ### Pare-feu et outils de sécurité
 
-La sécurisation de votre système est cruciale, et Ubuntu propose plusieurs outils pour vous aider dans cette tâche...
-
-
-### Pare-feu et outils de sécurité
-
 La sécurisation de votre système est cruciale, et Ubuntu propose plusieurs outils pour vous aider dans cette tâche. Bien que ces outils ne soient pas obligatoires, leur utilisation peut grandement contribuer à la protection de votre système.
 
 #### UFW (Uncomplicated Firewall)
