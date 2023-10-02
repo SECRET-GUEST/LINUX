@@ -250,12 +250,46 @@ Cela affichera une structure arborescente des répertoires et sous-répertoires,
 ## Navigation dans le système de fichiers
 
 Maîtrisez les commandes de base pour la navigation :
-- `ls` : liste les fichiers et dossiers.
-- `cd [nom_du_dossier]` : change de répertoire.
-- `pwd` : affiche le répertoire courant.
-- `mkdir [nom_du_dossier]` : crée un nouveau dossier.
+Bien sûr, voici une liste plus complète de commandes utiles pour la navigation et la gestion des fichiers dans un système Linux :
 
+- `ls` : Liste les fichiers et dossiers du répertoire courant.
+   - Options utiles :
+     - `-l` : Affiche les détails des fichiers et dossiers.
+     - `-a` : Affiche tous les fichiers et dossiers, y compris les fichiers cachés.
+     - `-h` : Affiche les tailles de fichier de manière lisible.
+     - 
+- `cd [nom_du_dossier]` : Change de répertoire.
+- `pwd` : Affiche le chemin du répertoire courant.
+- `mkdir [nom_du_dossier]` : Crée un nouveau dossier.
+- `rmdir [nom_du_dossier]` : Supprime un dossier vide.
+- `rm [nom_du_fichier]` : Supprime un fichier.
+   - Options utiles :
+     - `-r` ou `-R` : Supprime récursivement des dossiers et leurs contenus.
+     - `-f` : Force la suppression sans demander de confirmation.
+- `cp [source] [destination]` : Copie des fichiers ou des dossiers.
+   - Options utiles :
+     - `-r` : Copie récursivement des dossiers et leurs contenus.
 
+- `mv [source] [destination]` : Déplace ou renomme des fichiers ou des dossiers.
+- 
+- `touch [nom_du_fichier]` : Crée un nouveau fichier vide ou met à jour la date de modification d'un fichier existant.
+
+- `cat [nom_du_fichier]` : Affiche le contenu d'un fichier texte.
+- `nano [nom_du_fichier]` : Ouvre un fichier dans l'éditeur de texte nano.
+- `chmod [permissions] [nom_du_fichier_ou_dossier]` : Change les permissions d'un fichier ou d'un dossier.
+
+- `chown [utilisateur]:[groupe] [nom_du_fichier_ou_dossier]` : Change le propriétaire et le groupe d'un fichier ou d'un dossier.
+
+- `find [chemin] -name [nom_du_fichier_ou_dossier]` : Recherche des fichiers ou des dossiers par nom.
+ 
+- `grep [motif] [nom_du_fichier]` : Recherche un motif dans un fichier.
+- `df -h` : Affiche l'espace disque utilisé et disponible.
+- `du -sh [nom_du_dossier]` : Affiche l'espace disque utilisé par un dossier.
+- `ps aux` : Affiche la liste des processus en cours d'exécution.
+- `top` : Affiche les processus en temps réel, triés par utilisation du processeur.
+- `kill [ID_du_processus]` : Termine un processus.
+
+En vous familiarisant avec ces commandes, vous pourrez naviguer et gérer vos fichiers et dossiers efficacement dans un environnement Linux.
 
 
 
