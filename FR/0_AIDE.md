@@ -281,7 +281,7 @@ Ne vous laissez pas intimider par la longueur de cette liste ! Chaque commande a
 - `touch [nom_du_fichier]` : Crée un nouveau fichier vide ou met à jour la date de modification d'un fichier existant.
 
 - `cat [nom_du_fichier]` : Affiche le contenu d'un fichier texte.
-- `nano [nom_du_fichier]` : Ouvre un fichier dans l'éditeur de texte nano.
+- `vim [nom_du_fichier]` : Ouvre un fichier dans l'éditeur de texte vim.
 - `chmod [permissions] [nom_du_fichier_ou_dossier]` : Change les permissions d'un fichier ou d'un dossier.
 
 - `chown [utilisateur]:[groupe] [nom_du_fichier_ou_dossier]` : Change le propriétaire et le groupe d'un fichier ou d'un dossier.
@@ -351,7 +351,7 @@ Ensuite, configurez les paramètres DNS comme suit:
 La modification directe du fichier `/etc/resolv.conf` est déconseillée car il est géré par `systemd-resolved` et peut être réinitialisé automatiquement en plus de provoquer des conflits avec le gestionnaire de réseau d'Ubuntu et doit être effectuée avec prudence.
 
 ```sh
-sudo nano /etc/resolv.conf
+sudo vim /etc/resolv.conf
 ```
 Si nécessaire, remplacez les serveurs DNS par:
 ```sh
@@ -785,7 +785,7 @@ cat /etc/logrotate.d/rsyslog
 
 1. **Ouvrir ou créer un fichier de configuration** :
 ```bash
-sudo nano /etc/logrotate.d/rsyslog
+sudo vim /etc/logrotate.d/rsyslog
 ```
 
 2. **Ajouter ou modifier les directives** :
