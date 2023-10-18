@@ -44,6 +44,9 @@
 5. [Définir Brave ou un autre Navigateur comme Navigateur par Défaut](#définir-brave-ou-un-autre-navigateur-comme-navigateur-par-défaut)
 6. [Installation et Configuration d'OpenRGB](#installation-et-configuration-dopenrgb)
 
+## [Guide de Maintenance](#guide-de-maintenance)
+
+1. [Maintenance de Syslog](#maintenance-de-syslog)
 
 
 ---
@@ -729,3 +732,83 @@ xdg-settings set default-web-browser brave_brave.desktop
 
     [Plus d'infos](https://www.linuxcapable.com/how-to-install-openrgb-on-ubuntu-linux/)
     [OpenRGB sur GitLab](https://gitlab.com/CalcProgrammer1/OpenRGB)
+
+
+
+
+
+
+
+---
+---
+---
+```markdown
+_  _ ____ _ ___     ___ _ _  _ ____ 
+|\/| |__| | |  \     |  | |\/| |___ 
+|  | |  | | |__/     |  | |  | |___ 
+                                    
+```
+
+[Retour au Sommaire](#sommaire) 
+
+# Guide de Maintenance
+
+Ce guide propose plusieurs procédures de maintenance pour assurer le bon fonctionnement de votre système.
+
+
+## Maintenance de Syslog
+
+La gestion des fichiers de log est cruciale pour maintenir un système fonctionnel et pour faciliter le dépannage. Voici comment vous pouvez gérer les fichiers de log générés par syslog :
+
+### Troncature
+
+La troncature réinitialise la taille d'un fichier à zéro en supprimant tout son contenu, tout en conservant le fichier lui-même.
+
+Commande pour tronquer un fichier de log :
+```bash
+sudo truncate -s 0 /var/log/syslog
+```
+
+### Rotation des Logs
+
+La rotation des logs renomme et archive les fichiers de log actuels, et crée un nouveau fichier vide pour les entrées de log futures.
+
+#### Configuration existante
+
+Vérifiez la configuration existante dans le répertoire `/etc/logrotate.d/` :
+
+```bash
+cat /etc/logrotate.d/rsyslog
+```
+
+#### Créer ou modifier une configuration de rotation
+
+1. **Ouvrir ou créer un fichier de configuration** :
+```bash
+sudo nano /etc/logrotate.d/rsyslog
+```
+
+2. **Ajouter ou modifier les directives** :
+```plaintext
+{
+        rotate 2
+        daily
+        size 100M
+        missingok
+        notifempty
+        compress
+        delaycompress
+        sharedscripts
+        postrotate
+                /usr/lib/rsyslog/rsyslog-rotate
+        endscript
+}
+```
+
+3. **Sauvegarder et fermer** le fichier de configuration.
+
+4. **Tester la configuration** :
+```bash
+sudo logrotate --force /etc/logrotate.d/rsyslog
+```
+
