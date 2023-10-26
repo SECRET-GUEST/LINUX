@@ -1,22 +1,67 @@
 ![LINUX](https://img.shields.io/badge/LINUX-yellow)
 
 ```
-██╗  ██╗ ██████╗ ██╗    ██╗    ████████╗ ██████╗     ██╗     ██╗███╗   ██╗██╗   ██╗██╗  ██╗
-██║  ██║██╔═══██╗██║    ██║    ╚══██╔══╝██╔═══██╗    ██║     ██║████╗  ██║██║   ██║╚██╗██╔╝
-███████║██║   ██║██║ █╗ ██║       ██║   ██║   ██║    ██║     ██║██╔██╗ ██║██║   ██║ ╚███╔╝ 
-██╔══██║██║   ██║██║███╗██║       ██║   ██║   ██║    ██║     ██║██║╚██╗██║██║   ██║ ██╔██╗ 
-██║  ██║╚██████╔╝╚███╔███╔╝       ██║   ╚██████╔╝    ███████╗██║██║ ╚████║╚██████╔╝██╔╝ ██╗
-╚═╝  ╚═╝ ╚═════╝  ╚══╝╚══╝        ╚═╝    ╚═════╝     ╚══════╝╚═╝╚═╝  ╚═══╝ ╚═════╝ ╚═╝  ╚═╝
+██╗  ██╗ █████╗ ██╗     ██╗    ██████╗  █████╗ ███████╗██████╗ ██████╗ ███████╗██████╗ ██████╗ ██╗   ██╗
+██║ ██╔╝██╔══██╗██║     ██║    ██╔══██╗██╔══██╗██╔════╝██╔══██╗██╔══██╗██╔════╝██╔══██╗██╔══██╗╚██╗ ██╔╝
+█████╔╝ ███████║██║     ██║    ██████╔╝███████║███████╗██████╔╝██████╔╝█████╗  ██████╔╝██████╔╝ ╚████╔╝ 
+██╔═██╗ ██╔══██║██║     ██║    ██╔══██╗██╔══██║╚════██║██╔═══╝ ██╔══██╗██╔══╝  ██╔══██╗██╔══██╗  ╚██╔╝  
+██║  ██╗██║  ██║███████╗██║    ██║  ██║██║  ██║███████║██║     ██████╔╝███████╗██║  ██║██║  ██║   ██║   
+╚═╝  ╚═╝╚═╝  ╚═╝╚══════╝╚═╝    ╚═╝  ╚═╝╚═╝  ╚═╝╚══════╝╚═╝     ╚═════╝ ╚══════╝╚═╝  ╚═╝╚═╝  ╚═╝   ╚═╝   
+                                                                                                        
 ```
 
-# Introduction
+## Introduction
 
-Bienvenue dans ce recueil de tutoriels dédiés aux différentes distributions Linux que j'utilise. L'objectif de ces tutoriels n'est pas d'être exhaustif, mais plutôt de servir d'exemples pratiques pour les personnes qui me sont proches. Toutefois, ces ressources sont ouvertes à toute contribution, et je serais particulièrement reconnaissant pour toute aide apportée à la traduction.
+Bienvenue sur cette branche qui vise à faciliter l'installation de Kali Linux sur un Raspberry Pi. Ce guide vous accompagnera à travers les étapes nécessaires pour télécharger, installer et configurer Kali Linux sur votre Raspberry Pi.
 
-Chaque branche de ce dépôt représente une distribution spécifique, facilitant ainsi le téléchargement de la documentation nécessaire selon vos besoins.
+### Étape 1 : Téléchargement de l'image de Kali Linux
 
-Il est envisageable que ce dépôt évolue au fil du temps, avec l'ajout de sections dédiées à l'installation de solutions Docker pour chaque distribution, ou encore de configurations pour le cloud et autres technologies pertinentes. 
+1. Rendez-vous sur la [page de téléchargement de Kali Linux](https://www.kali.org/get-kali/#kali-arm).
+2. Téléchargez l'image correspondante à votre modèle de Raspberry Pi. Par exemple, pour un Raspberry Pi avec 8 Go de RAM, il est recommandé de télécharger une image avec une architecture 64 bits car les versions 32 bits ne peuvent pas gérer plus de 4 Go de RAM.
 
-Votre contribution à cette initiative est la bienvenue, que ce soit en partageant votre expertise, en proposant des améliorations ou en participant à la traduction des contenus. Ensemble, nous pouvons enrichir ces ressources et faciliter l'apprentissage et l'utilisation de Linux pour notre communauté.
+### Étape 2 : Écriture de l'image sur une carte SD
 
-N'hésitez pas à explorer les différentes branches de ce dépôt, et à télécharger la documentation qui correspond à vos besoins.
+Exécutez la commande suivante pour écrire l'image de Kali Linux sur votre carte SD :
+
+```bash
+$ xzcat kali-linux-2023.3-raspberry-pi-armhf.img.xz | sudo dd of=/dev/sdb bs=4M status=progress
+```
+
+**Notes**:
+- Remplacez `sdb` par l'identifiant de votre carte SD.
+- Pour trouver l'identifiant de votre carte SD, vous pouvez utiliser des outils tels que `lsblk`, `fdisk`, ou `gparted`.
+
+### Étape 3 : Scripts de configuration
+
+La suite du tutoriel se trouve dans les différents dossiers accompagnés de scripts. Nous partons du principe que les personnes souhaitant installer Kali Linux sont déjà familières avec Bash, car autrement, ce ne serait pas recommandé pour elles de procéder à cette installation.
+
+Les scripts fournis sont généraux et peuvent nécessiter des modifications selon vos besoins spécifiques. Chaque script contient des explications détaillées sur les étapes qu'il effectue. Par exemple, le dossier `matrix` contient des scripts permettant de configurer un serveur Synapse pour Element.io, et ainsi de suite.
+
+N'hésitez pas à explorer les dossiers et à modifier les scripts selon vos besoins pour personnaliser votre installation de Kali Linux sur votre Raspberry Pi.
+
+
+```
+..............            
+            ..,;:ccc,.        
+          ......''';lxO.                          
+.....''''..........,:ld;         
+           .';;;:::;,,.x,            
+      ..'''.            0Xxoc:,.  ...     
+  ....                ,ONkc;,;cokOdc',.     
+ .                   OMo           ':ddo.   
+                    dMc               :OO;      
+                    0M.                 .:o.    
+                    ;Wd                       
+                     ;XO,                  
+                       ,d0Odlc;,..           
+                           ..',;:cdOOd::,.    
+                                    .:d;.':;.   
+                                       'd,  .'     
+                                         ;l   ..  
+                                          .o
+                                            c                              
+                                            .'                             
+                                             .
+
+
+```
