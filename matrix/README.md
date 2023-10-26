@@ -11,6 +11,12 @@
 
 Ce dossier contient des scripts qui facilitent l'installation, la gestion, et le renouvellement du certificat SSL pour un serveur Synapse de Matrix sur votre Raspberry Pi. Voici une description de chaque script et des instructions sur la manière de les utiliser.
 
+
+## 💎 Recommendations
+
+Vous pouvez utiliser [ce lanceur de script ](https://github.com/SECRET-GUEST/tiny-scripts/tree/ALL/linux/launchers/script%20launcher) pour exécuter ces scripts facilement via un terminal. Ce truc liste tous les scripts du dossier et vous permet de choisir celui que vous souhaitez exécuter.
+
+
 ## 1. Install_server_Synaptic_matrix.sh
 
 Ce script automatise l'installation de Synapse, de Nginx, et de Certbot. Il configure également Nginx pour servir Synapse, obtient un certificat SSL avec Certbot, et configure le pare-feu UFW.
