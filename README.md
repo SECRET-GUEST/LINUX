@@ -39,6 +39,10 @@ Les scripts fournis sont généraux et peuvent nécessiter des modifications sel
 
 N'hésitez pas à explorer les dossiers et à modifier les scripts selon vos besoins pour personnaliser votre installation de Kali Linux sur votre Raspberry Pi.
 
+## 💎 Recommendations
+
+Vous pouvez utiliser [ce lanceur de script ](https://github.com/SECRET-GUEST/tiny-scripts/tree/ALL/linux/launchers/script%20launcher) pour exécuter ces scripts facilement via un terminal. Ce truc liste tous les scripts du dossier et vous permet de choisir celui que vous souhaitez exécuter.
+
 
 ```
 ..............            
