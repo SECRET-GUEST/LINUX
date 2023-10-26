@@ -11,12 +11,12 @@
 
 # Introduction
 
-Welcome to this collection of tutorials dedicated to the different Linux distributions I use. The goal of these tutorials is not to be exhaustive, but rather to serve as practical examples for the people close to me. However, these resources are open to any contribution, and I would be particularly grateful for any help provided in translation.
+Bienvenue dans ce recueil de tutoriels dédiés aux différentes distributions Linux que j'utilise. L'objectif de ces tutoriels n'est pas d'être exhaustif, mais plutôt de servir d'exemples pratiques pour les personnes qui me sont proches. Toutefois, ces ressources sont ouvertes à toute contribution, et je serais particulièrement reconnaissant pour toute aide apportée à la traduction.
 
-Each branch of this repository represents a specific distribution, making it easier to download the necessary documentation as per your needs.
+Chaque branche de ce dépôt représente une distribution spécifique, facilitant ainsi le téléchargement de la documentation nécessaire selon vos besoins.
 
-It is conceivable that this repository will evolve over time, with the addition of sections dedicated to installing Docker solutions for each distribution, or configurations for the cloud and other relevant technologies.
+Il est envisageable que ce dépôt évolue au fil du temps, avec l'ajout de sections dédiées à l'installation de solutions Docker pour chaque distribution, ou encore de configurations pour le cloud et autres technologies pertinentes. 
 
-Your contribution to this initiative is welcome, be it by sharing your expertise, proposing improvements, or participating in the translation of the contents. Together, we can enrich these resources and facilitate the learning and use of Linux for our community.
+Votre contribution à cette initiative est la bienvenue, que ce soit en partageant votre expertise, en proposant des améliorations ou en participant à la traduction des contenus. Ensemble, nous pouvons enrichir ces ressources et faciliter l'apprentissage et l'utilisation de Linux pour notre communauté.
 
-Feel free to explore the different branches of this repository, and to download the documentation that meets your needs.
+N'hésitez pas à explorer les différentes branches de ce dépôt, et à télécharger la documentation qui correspond à vos besoins.
