@@ -14,7 +14,7 @@ Ce dossier contient des scripts pour configurer un environnement utilisateur sé
 
 ## 💎 Recommendations
 
-Vous pouvez utiliser [Script Launcher](https://github.com/SECRET-GUEST/tiny-scripts/tree/ALL/linux/launchers/script%20launcher) pour exécuter ces scripts facilement via un terminal. Script Launcher liste tous les scripts du dossier et vous permet de choisir celui que vous souhaitez exécuter.
+Vous pouvez utiliser [ce lanceur de script ](https://github.com/SECRET-GUEST/tiny-scripts/tree/ALL/linux/launchers/script%20launcher) pour exécuter ces scripts facilement via un terminal. Ce truc liste tous les scripts du dossier et vous permet de choisir celui que vous souhaitez exécuter.
 
 ## 🛠️ Utilisation des Scripts
 
