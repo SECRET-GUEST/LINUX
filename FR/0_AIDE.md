@@ -50,17 +50,15 @@
 2. [Sauvegarde et Restauration des Données](#sauvegarde-et-restauration-des-données)
 3. [Autres Méthodes de Sauvegarde et Restauration](#autres-méthodes-de-sauvegarde-et-restauration)
 
+## [Guide du partage de données](#guide-du-partage-de-données)
+
+1. [Configuration du Serveur avec RealVNC](#configuration-du-serveur-avec-realvnc)
 
 ---
-
 ---
-
 ---
-
 ---
-
 ---
-
 ```markdown
  _ _ _ ____ ____ _  _ ____ ___  ____ ____ ____ 
  | | | |  | |__/ |_/  [__  |__] |__| |    |___ 
@@ -915,5 +913,73 @@ Bacula et Bareos sont des solutions de sauvegarde et de restauration en réseau 
 
 - **Utilisation** :
   - Avec une interface CLI ou GUI, vous pouvez gérer les tâches de sauvegarde et de restauration, planifier des sauvegardes régulières, et restaurer des données en cas de besoin.
+
+
+
+
+---
+---
+---
+```markdown
+___  ____ ___ ____    ____ _  _ ____ ____ _ _  _ ____ 
+|  \ |__|  |  |__|    [__  |__| |__| |__/ | |\ | | __ 
+|__/ |  |  |  |  |    ___] |  | |  | |  \ | | \| |__] 
+```
+[Retour au Sommaire](#sommaire) 
+
+# Guide du partage de données
+
+Ce guide vous permet de partager votre écran via VNC au sein de votre réseau local. Cependant, il ne propose aucune mesure de sécurité ; toute personne ayant l'adresse, ou la trouvant sur votre réseau interne, sera en mesure d'intercepter vos données !
+
+## Configuration du Serveur avec RealVNC
+
+Ce document guide l'utilisateur à travers l'installation et la configuration d'un serveur VNC sur Ubuntu en utilisant RealVNC.
+
+### Étape 1 : Installation du Serveur VNC
+
+1. Ouvrez un terminal sur votre machine Ubuntu.
+2. Exécutez la commande suivante pour installer `x11vnc` :
+    ```bash
+    sudo apt-get install x11vnc
+    ```
+
+### Étape 2 : Configuration du Serveur VNC
+
+1. Configurez un mot de passe pour le serveur VNC en exécutant la commande suivante :
+    ```bash
+    x11vnc -storepasswd
+    ```
+
+
+2. Lancez le serveur VNC en spécifiant le port de votre choix (par exemple, 45454) :
+    ```bash
+    x11vnc -usepw -rfbport 45454
+    ```
+
+### Étape 3 : Trouver l'Adresse IP Locale
+
+1. Trouvez l'adresse IP de votre machine Ubuntu en exécutant la commande suivante :
+    ```bash
+    hostname -I
+    ```
+    Si vous en avez plusieurs, ca peut etre dut à plusieurs choses, docker, wifi,... Utilisez celle qui ressemble a 192.168....
+
+### Étape 4 : Installation de RealVNC Viewer sur la Tablette
+
+1. Sur votre tablette, accédez au Google Play Store.
+2. Recherchez et installez l'application `VNC Viewer` de RealVNC (le meilleur).
+
+### Étape 5 : Connexion au Serveur VNC depuis la Tablette
+
+1. Ouvrez l'application `VNC Viewer` sur votre tablette.
+2. Tapez l'adresse IP de votre machine Ubuntu suivie du port sur lequel le serveur VNC est en cours d'exécution, séparés par un deux-points (par exemple, `192.168.1.100:45454`).
+3. Entrez le mot de passe que vous avez configuré précédemment pour le serveur VNC lorsque vous y êtes invité.
+4. Tapotez sur "Connect" pour vous connecter au serveur VNC.
+
+Vous devriez maintenant être en mesure d'accéder à l'interface d'Ubuntu depuis votre tablette via VNC.
+
+### Sécurité
+
+Par défaut, cette configuration permettra l'accès au serveur VNC uniquement au sein de votre réseau local. Pour accéder au serveur VNC depuis l'extérieur de votre réseau local, des configurations supplémentaires comme le transfert de port et/ou un service DNS dynamique seront nécessaires, tout en tenant compte des implications en matière de sécurité.
 
 
