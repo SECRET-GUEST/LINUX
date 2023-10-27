@@ -14,22 +14,9 @@
 
 Bienvenue sur cette branche qui vise à faciliter l'installation de Kali Linux sur un Raspberry Pi. Ce guide vous accompagnera à travers les étapes nécessaires pour télécharger, installer et configurer Kali Linux sur votre Raspberry Pi.
 
-### Étape 1 : Téléchargement de l'image de Kali Linux
+### Téléchargement de l'image de Kali Linux
 
-1. Rendez-vous sur la [page de téléchargement de Kali Linux](https://www.kali.org/get-kali/#kali-arm).
-2. Téléchargez l'image correspondante à votre modèle de Raspberry Pi. Par exemple, pour un Raspberry Pi avec 8 Go de RAM, il est recommandé de télécharger une image avec une architecture 64 bits car les versions 32 bits ne peuvent pas gérer plus de 4 Go de RAM.
-
-### Étape 2 : Écriture de l'image sur une carte SD
-
-Exécutez la commande suivante pour écrire l'image de Kali Linux sur votre carte SD :
-
-```bash
-$ xzcat kali-linux-2023.3-raspberry-pi-armhf.img.xz | sudo dd of=/dev/sdb bs=4M status=progress
-```
-
-**Notes**:
-- Remplacez `sdb` par l'identifiant de votre carte SD.
-- Pour trouver l'identifiant de votre carte SD, vous pouvez utiliser des outils tels que `lsblk`, `fdisk`, ou `gparted`.
+Téléchargez l'image correspondante sur la [page de téléchargement de Kali Linux](https://www.kali.org/get-kali/#kali-installer-images).
 
 ### Étape 3 : Scripts de configuration
 
