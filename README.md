@@ -35,7 +35,7 @@ $ xzcat kali-linux-2023.3-raspberry-pi-armhf.img.xz | sudo dd of=/dev/sdb bs=4M 
 
 La suite du tutoriel se trouve dans les différents dossiers accompagnés de scripts. Nous partons du principe que les personnes souhaitant installer Kali Linux sont déjà familières avec Bash, car autrement, ce ne serait pas recommandé pour elles de procéder à cette installation.
 
-Les scripts fournis sont généraux et peuvent nécessiter des modifications selon vos besoins spécifiques. Chaque script contient des explications détaillées sur les étapes qu'il effectue. Par exemple, le dossier `matrix` contient des scripts permettant de configurer un serveur Synapse pour Element.io, et ainsi de suite.
+Les scripts fournis sont généraux et peuvent nécessiter des modifications selon vos besoins spécifiques. Chaque script contient des explications détaillées sur les étapes qu'il effectue.
 
 N'hésitez pas à explorer les dossiers et à modifier les scripts selon vos besoins pour personnaliser votre installation de Kali Linux sur votre Raspberry Pi.
 
