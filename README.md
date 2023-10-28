@@ -14,6 +14,14 @@
 
 Bienvenue sur cette branche qui vise à faciliter l'installation de Kali Linux sur un Raspberry Pi. Ce guide vous accompagnera à travers les étapes nécessaires pour télécharger, installer et configurer Kali Linux sur votre Raspberry Pi.
 
+| Points Forts             | Points Faibles             |
+|--------------------------|----------------------------|
+| Riche en outils de test de pénétration | Pas destiné à un usage quotidien |
+| Mises à jour régulières  | Courbe d'apprentissage abrupte pour les novices |
+| Communauté active       | Peut nécessiter du matériel supplémentaire pour des tests spécifiques |
+| Supporte de nombreuses architectures | Demande une certaine expertise en sécurité |
+| Customisable            |                             |
+
 ### Téléchargement de l'image de Kali Linux
 
 Téléchargez l'image correspondante sur la [page de téléchargement de Kali Linux](https://www.kali.org/get-kali/#kali-installer-images).
