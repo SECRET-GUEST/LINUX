@@ -14,6 +14,19 @@
 
 Bienvenue sur cette branche qui vise à faciliter l'installation du Raspberry Pi OS sur un Raspberry Pi. Ce guide vous accompagnera à travers les étapes nécessaires pour télécharger, installer et configurer Raspberry Pi OS sur votre Raspberry Pi.
 
+
+| Points Forts           | Points Faibles              |
+|------------------------|-----------------------------|
+| Coût abordable        | Performance limitée         |
+| Consommation faible   | Stockage limité             |
+| Taille compacte       | Ports d'extension limités   |
+| Communauté active     | Chauffe en utilisation intense |
+| Flexibilité           | Nécessite des connaissances techniques |
+| Support multi-OS      | Support matériel limité     |
+| Large gamme d'applications | Adaptateurs requis pour certains périphériques |
+| Interface GPIO pour projets DIY | Performance réseau modérée |
+
+
 ### Étape 1 : Téléchargement de l'image du Raspberry Pi OS
 
 1. Rendez-vous sur la [page de téléchargement du Raspberry Pi OS](https://www.raspberrypi.org/software/operating-systems/).
@@ -45,6 +58,9 @@ N'hésitez pas à explorer les dossiers et à modifier les scripts selon vos bes
 Pour les débutants en Linux, un tutoriel est disponible sur [la branche Ubuntu](https://github.com/SECRET-GUEST/LINUX/tree/Ubuntu) de ce dépôt. Étant basé sur un système Debian, la plupart des actions basiques décrites fonctionneront également sur ce système.
 
 Vous pouvez utiliser [ce lanceur de script](https://github.com/SECRET-GUEST/tiny-scripts/tree/ALL/linux/launchers/script%20launcher) pour exécuter ces scripts facilement via un terminal. Ce truc liste tous les scripts du dossier et vous permet de choisir celui que vous souhaitez exécuter.
+
+
+
 
 ```
      .~~.   .~~.
