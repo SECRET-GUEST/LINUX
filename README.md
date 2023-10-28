@@ -14,6 +14,22 @@
 
 Bienvenue sur cette branche qui vise à faciliter l'installation de Kali Linux sur un Raspberry Pi. Ce guide vous accompagnera à travers les étapes nécessaires pour télécharger, installer et configurer Kali Linux sur votre Raspberry Pi.
 
+| Points Forts            | Points Faibles               |
+|-------------------------|------------------------------|
+| Portable                | Performance limitée          |
+| Abordable               | Stockage limité              |
+| Accès à des outils de test de pénétration | Adaptateurs requis pour certains tests |
+| Faible consommation d'énergie | Moins d'outils disponibles que sur les architectures x86/x64 |
+|                         | Installation et configuration initiales peuvent être complexes |
+
+
+## 💎 Recommendations
+
+Pour les débutants en Linux, un tutoriel est disponible sur [la branche Ubuntu](https://github.com/SECRET-GUEST/LINUX/tree/Ubuntu) de ce dépôt. Étant basé sur un système Debian, la plupart des actions basiques décrites fonctionneront également sur ce système.
+
+Vous pouvez utiliser [ce lanceur de script ](https://github.com/SECRET-GUEST/tiny-scripts/tree/ALL/linux/launchers/script%20launcher) pour exécuter ces scripts facilement via un terminal. Ce truc liste tous les scripts du dossier et vous permet de choisir celui que vous souhaitez exécuter.
+
+
 ### Étape 1 : Téléchargement de l'image de Kali Linux
 
 1. Rendez-vous sur la [page de téléchargement de Kali Linux](https://www.kali.org/get-kali/#kali-arm).
@@ -38,12 +54,6 @@ La suite du tutoriel se trouve dans les différents dossiers accompagnés de scr
 Les scripts fournis sont généraux et peuvent nécessiter des modifications selon vos besoins spécifiques. Chaque script contient des explications détaillées sur les étapes qu'il effectue.
 
 N'hésitez pas à explorer les dossiers et à modifier les scripts selon vos besoins pour personnaliser votre installation de Kali Linux sur votre Raspberry Pi.
-
-## 💎 Recommendations
-
-Pour les débutants en Linux, un tutoriel est disponible sur [la branche Ubuntu](https://github.com/SECRET-GUEST/LINUX/tree/Ubuntu) de ce dépôt. Étant basé sur un système Debian, la plupart des actions basiques décrites fonctionneront également sur ce système.
-
-Vous pouvez utiliser [ce lanceur de script ](https://github.com/SECRET-GUEST/tiny-scripts/tree/ALL/linux/launchers/script%20launcher) pour exécuter ces scripts facilement via un terminal. Ce truc liste tous les scripts du dossier et vous permet de choisir celui que vous souhaitez exécuter.
 
 
 ```
