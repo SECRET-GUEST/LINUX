@@ -11,66 +11,59 @@
 ![Bash Script](https://img.shields.io/badge/script-bash-green) 
 ![LINUX](https://img.shields.io/badge/Debian-LINUX-orange)
 
-# Configuration and Use of VNC Server and SSH Tunnel
+# Configuration et Utilisation du Serveur VNC et Tunnel SSH
 
-This project contains scripts to configure a VNC server with audio streaming on a Linux machine, and establish a SSH tunnel from a Raspberry Pi to access the VNC server and audio.
+Ce projet contient des scripts pour configurer un serveur VNC avec streaming audio sur une machine Linux, et établir un tunnel SSH depuis un Raspberry Pi pour accéder au serveur VNC et à l'audio.
 
-## Folder Structure
+## Structure des Dossiers
 
-- `server/`: Contains scripts for configuring and launching the VNC server on the Linux machine.
-- `viewer/`: Contains scripts for configuring and launching the VNC client on the Raspberry Pi.
+- `server/`: Contient les scripts pour la configuration et le lancement du serveur VNC sur la machine Linux.
+- `viewer/`: Contient les scripts pour la configuration et le lancement du client VNC sur le Raspberry Pi.
 
-## Script Details
+## Détails des Scripts
 
-### Server (Linux machine):
+### Serveur (machine Linux) :
 
-- `server/setup_vnc_ssh.sh`:
-  - This script installs the necessary packages for the VNC server, PulseAudio, and SSH server.
-  - Configures x11vnc with a password.
-  - Configures PulseAudio to accept network connections.
-  - Generates a SSH key pair and copies the public key to the Raspberry Pi for password-less authentication.
+- `server/setup_vnc_ssh.sh` :
+  - Ce script installe les paquets nécessaires pour le serveur VNC, PulseAudio, et le serveur SSH.
+  - Configure x11vnc avec un mot de passe.
+  - Configure PulseAudio pour accepter les connexions réseau.
+  - Génère une paire de clés SSH et copie la clé publique sur le Raspberry Pi pour l'authentification sans mot de passe.
 
-- `server/raspberry_ssh_vnc.sh`:
-  - This script launches the VNC server and PulseAudio.
-  - Configures UFW (Uncomplicated Firewall) to allow only connections to port 6554 (used for VNC and SSH) from the Raspberry Pi.
-  - Waits for the VNC server to terminate before deleting the UFW rule and stopping PulseAudio.
+- `server/raspberry_ssh_vnc.sh` :
+  - Ce script lance le serveur VNC et PulseAudio.
+  - Configure UFW (Uncomplicated Firewall) pour permettre uniquement les connexions au port 6554 (utilisé pour le VNC et SSH) depuis le Raspberry Pi.
+  - Attends que le serveur VNC se termine avant de supprimer la règle UFW et d'arrêter PulseAudio.
 
-### Viewer (Raspberry Pi):
+### Viewer (Raspberry Pi) :
 
-- `viewer/setup.sh`:
-  - This script installs the necessary packages for the VNC client, PulseAudio volume control, and SSH client on the Raspberry Pi.
+- `viewer/setup.sh` :
+  - Ce script installe les paquets nécessaires pour le client VNC, le contrôleur de volume PulseAudio, et le client SSH sur le Raspberry Pi.
 
-- `viewer/launch.sh`:
-  - This script establishes a SSH tunnel to the Linux machine, redirecting the necessary ports for VNC and audio.
-  - Waits for the user to press Enter to close the connection, then closes the SSH tunnel.
+- `viewer/launch.sh` :
+  - Ce script établit un tunnel SSH vers la machine Linux, redirigeant les ports nécessaires pour le VNC et l'audio.
+  - Attends que l'utilisateur appuie sur Entrée pour fermer la connexion, puis ferme le tunnel SSH.
+
 
 ## 💎 Recommendations  
 
-In your quest for more tools to enhance your desktop productivity, these additional repositories are worth a look:
+- [LNK reader](https://github.com/SECRET-GUEST/windows_link_reader): Permet de lire les raccourcis windows depuis un ordinateur linux, décodant les données binaires (donc c'est pas 100% fonctionnel)
+- [File organizer ](https://github.com/SECRET-GUEST/file_organizer) : Un tool pour organiser les fichiers dans des dossiers selon leur extention, apres avoir utiliser un tool pour récuperer les fichiers notament.
 
-- [LNK reader](https://github.com/SECRET-GUEST/windows_link_reader): Allow dual boot Linux users to work with Windows shortcuts.
-- [File organizer ](https://github.com/SECRET-GUEST/file_organizer) : A versatile tool for sorting and organizing files efficiently, ideal for managing recovered data.
-
-Looking for more? Discover user-friendly, GUI-free script here: 
+Sinon voici une collection de petit scripts utiles pour tout et nimp :
 - [Tiny Scripts](https://github.com/SECRET-GUEST/tiny-scripts)
+
 
 ## 📥 Installation
 
-1. **On the Linux machine**:
-   - Run `server/setup_vnc_ssh.sh` to configure the server.
-   - Run `server/raspberry_ssh_vnc.sh` to launch the VNC server and PulseAudio.
+1. **Sur la machine Linux** :
+   - Exécutez `server/setup_vnc_ssh.sh` pour configurer le serveur.
+   - Exécutez `server/raspberry_ssh_vnc.sh` pour lancer le serveur VNC et PulseAudio.
 
-2. **On the Raspberry Pi**:
-   - Run `viewer/setup.sh` to configure the VNC client.
-   - Run `viewer/launch.sh` to establish the tunneled connection via SSH and access the VNC server and audio.
+2. **Sur le Raspberry Pi** :
+   - Exécutez `viewer/setup.sh` pour configurer le client VNC.
+   - Exécutez `viewer/launch.sh` pour établir la connexion tunnelisée via SSH et accéder au serveur VNC et à l'audio.
 
-## 📜 License
-
-This repository is released under the [MIT License](LICENSE). Please see the `LICENSE` file for more information.
-
-## ❓ Support & Questions
-
-If you have any questions or need support, please feel free to open an issue, a new discussion, or join my twitter.
 
 
 ```
