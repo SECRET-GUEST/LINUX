@@ -24,7 +24,7 @@ Bienvenue sur cette branche qui vise à faciliter l'installation de Kali Linux s
 Exécutez la commande suivante pour écrire l'image de Kali Linux sur votre carte SD :
 
 ```bash
-$ xzcat kali-linux-2023.3-raspberry-pi-armhf.img.xz | sudo dd of=/dev/sdb bs=4M status=progress
+xzcat kali-linux-2023.3-raspberry-pi-armhf.img.xz | sudo dd of=/dev/sdb bs=4M status=progress
 ```
 
 **Notes**:
