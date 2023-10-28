@@ -41,6 +41,8 @@ N'hésitez pas à explorer les dossiers et à modifier les scripts selon vos bes
 
 ## 💎 Recommendations
 
+Pour les débutants en Linux, un tutoriel est disponible sur [la branche Ubuntu](https://github.com/SECRET-GUEST/LINUX/tree/Ubuntu) de ce dépôt. Étant basé sur un système Debian, la plupart des actions basiques décrites fonctionneront également sur ce système.
+
 Vous pouvez utiliser [ce lanceur de script ](https://github.com/SECRET-GUEST/tiny-scripts/tree/ALL/linux/launchers/script%20launcher) pour exécuter ces scripts facilement via un terminal. Ce truc liste tous les scripts du dossier et vous permet de choisir celui que vous souhaitez exécuter.
 
 
