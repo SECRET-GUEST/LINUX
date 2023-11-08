@@ -1,29 +1,24 @@
 #!/bin/bash
 
-# Vérifie si le script est exécuté en tant que root
+# Ce script est destiné à être exécuté avec des privilèges de superutilisateur
 if [[ $EUID -ne 0 ]]; then
-   echo "Ce script doit être exécuté en tant que root" 
+   echo "Ce script doit être exécuté avec des privilèges de superutilisateur."
    exit 1
 fi
+
+# Mise à jour des paquets et installation des paquets nécessaires
+apt update && apt upgrade -y
+apt install -y lsb-release wget apt-transport-https nginx certbot python3-certbot-nginx ufw fail2ban
 
 # Demande des informations de configuration
 read -p "Entrez le nom de domaine de votre serveur Matrix (par exemple, matrix.example.com) : " domain
 
-# Mise à jour des paquets
-sudo apt update && sudo apt upgrade -y
-
-# Installation des paquets nécessaires
-sudo apt install -y lsb-release wget apt-transport-https nginx certbot python3-certbot-nginx ufw fail2ban
-
 # Configuration de Synapse
-sudo wget -O /usr/share/keyrings/matrix-org-archive-keyring.gpg https://packages.matrix.org/debian/matrix-org-archive-keyring.gpg
+wget -O /usr/share/keyrings/matrix-org-archive-keyring.gpg https://packages.matrix.org/debian/matrix-org-archive-keyring.gpg
 echo "deb [signed-by=/usr/share/keyrings/matrix-org-archive-keyring.gpg] https://packages.matrix.org/debian/ $(lsb_release -cs) main" |
-    sudo tee /etc/apt/sources.list.d/matrix-org.list
-sudo apt update
-sudo apt install -y matrix-synapse-py3
-
-# Obtention d'un certificat SSL avec Certbot
-sudo certbot --nginx -d $domain
+    tee /etc/apt/sources.list.d/matrix-org.list
+apt update
+apt install -y matrix-synapse-py3
 
 # Configuration de Nginx pour Synapse avec HTTPS strict
 nginx_config="
@@ -49,32 +44,78 @@ server {
     }
 }
 "
-echo "$nginx_config" | sudo tee /etc/nginx/sites-available/matrix
-sudo ln -s /etc/nginx/sites-available/matrix /etc/nginx/sites-enabled
-sudo nginx -s reload
+echo "$nginx_config" | tee /etc/nginx/sites-available/matrix
+ln -s /etc/nginx/sites-available/matrix /etc/nginx/sites-enabled
+nginx -s reload
 
-# Configuration du pare-feu
-sudo ufw allow 80/tcp
-sudo ufw allow 443/tcp
-sudo ufw enable
+# Activation du pare-feu UFW
+ufw enable
 
-# Configuration de Fail2Ban
-sudo cp /etc/fail2ban/jail.conf /etc/fail2ban/jail.local
-sudo sed -i "s/bantime  = 10m/bantime  = 5m/" /etc/fail2ban/jail.local
-sudo sed -i "s/maxretry = 5/maxretry = 5/" /etc/fail2ban/jail.local
-sudo systemctl enable fail2ban
-sudo systemctl start fail2ban
+# Configuration initiale du pare-feu
+ufw default deny incoming
+ufw default allow outgoing
 
-# Planification des sauvegardes hebdomadaires de la base de données
-backup_script="
-#!/bin/bash
-pg_dump matrix-synapse > /media/usb/matrix_backup_$(date +\%F).sql
-"
-echo "$backup_script" | sudo tee /etc/cron.weekly/matrix_backup.sh
-sudo chmod +x /etc/cron.weekly/matrix_backup.sh
+# Internet ?
+echo "Comment souhaitez-vous configurer votre serveur Synapse ?"
+echo "1) Ouvrir le serveur à Internet avec un accès HTTPS sécurisé."
+echo "2) Fonctionner uniquement en réseau interne."
+echo -n "Entrez 1 ou 2 pour votre choix : "
 
-# Démarrage de Synapse
-sudo systemctl enable matrix-synapse
-sudo systemctl start matrix-synapse
+while :
+do
+    read -r yn
+    case $yn in
+        1 )
+            echo "Configuration pour un accès ouvert à Internet."
+            # Tentez d'obtenir un certificat avec Certbot
+            if ! certbot --nginx -d "$domain"; then
+                echo "Certbot a échoué, génération d'un certificat auto-signé."
+                mkdir -p "/etc/letsencrypt/live/$domain"
+                openssl req -x509 -nodes -days 365 -newkey rsa:2048 \
+                -keyout "/etc/letsencrypt/live/$domain/privkey.pem" \
+                -out "/etc/letsencrypt/live/$domain/fullchain.pem" \
+                -subj "/CN=$domain"
+            fi
+            # Autoriser le trafic HTTPS de n'importe où
+            sudo ufw allow 443/tcp
+            sudo ufw allow 80/tcp
+            break
+            ;;
+        2 )
+            echo "Configuration pour un fonctionnement en réseau interne uniquement."
+            # Génération d'un certificat auto-signé
+            mkdir -p "/etc/letsencrypt/live/$domain"
+            openssl req -x509 -nodes -days 365 -newkey rsa:2048 \
+            -keyout "/etc/letsencrypt/live/$domain/privkey.pem" \
+            -out "/etc/letsencrypt/live/$domain/fullchain.pem" \
+            -subj "/CN=$domain"
+            # Autoriser le trafic interne uniquement
+            sudo ufw allow from 192.168.0.0/16 to any port 8008
+            sudo ufw allow from 10.0.0.0/8 to any port 8008
+            sudo ufw allow from 172.16.0.0/12 to any port 8008
+            break
+            ;;
+        * )
+            echo "Choix invalide, veuillez entrer 1 ou 2."
+            ;;
+    esac
+done
 
-echo "L'installation de Synapse, Nginx, et Certbot est terminée. Votre serveur Matrix est maintenant en cours d'exécution sur https://$domain."
+
+# Réinitialisation des règles du pare-feu à l'arrêt
+trap 'echo "Arrêt du serveur Synapse et réinitialisation du pare-feu"; ufw reset; systemctl stop matrix-synapse; exit 0' SIGINT SIGTERM
+
+# Activation et démarrage de Synapse
+systemctl enable matrix-synapse
+systemctl start matrix-synapse
+
+# Affichage de l'URL pour se connecter à Synapse via Element
+if [[ $yn == 1 ]]; then
+    echo "Votre serveur Synapse est maintenant accessible depuis Internet à l'adresse https://$domain"
+elif [[ $yn == 2 ]]; then
+    # Obtenez l'adresse IP locale du Raspberry Pi
+    local_ip=$(hostname -I | awk '{print $1}')
+    echo "Votre serveur Synapse est maintenant accessible en réseau interne à l'adresse http://$local_ip:8008"
+fi
+
+echo "L'installation de Synapse, Nginx, et Certbot est terminée. Veuillez utiliser l'URL ci-dessus pour vous connecter via Element."
