@@ -33,6 +33,38 @@ ufw enable
 ufw default deny incoming
 ufw default allow outgoing
 
+
+# Fonction de configuration de Nginx
+configure_nginx() {
+    echo "Configuration de Nginx..."
+    nginx_config="
+    server {
+        listen 80;
+        server_name $domain;
+        return 301 https://\$host\$request_uri;
+    }
+
+    server {
+        listen 443 ssl;
+        server_name $domain;
+
+        ssl_certificate /etc/letsencrypt/live/$domain/fullchain.pem;
+        ssl_certificate_key /etc/letsencrypt/live/$domain/privkey.pem;
+
+        # Configuration HTTPS stricte
+        add_header Strict-Transport-Security \"max-age=31536000\";
+
+        location / {
+            proxy_pass http://localhost:8008;
+            proxy_set_header X-Forwarded-For \$remote_addr;
+        }
+    }
+    "
+    echo "$nginx_config" | tee /etc/nginx/sites-available/matrix
+    ln -s /etc/nginx/sites-available/matrix /etc/nginx/sites-enabled
+    systemctl reload nginx
+}
+
 # Choix de configuration
 echo "Comment souhaitez-vous configurer votre serveur Synapse ?"
 echo "1) Ouvrir le serveur à Internet avec un accès HTTPS sécurisé."
@@ -82,36 +114,6 @@ do
     esac
 done
 
-# Fonction de configuration de Nginx
-configure_nginx() {
-    echo "Configuration de Nginx..."
-    nginx_config="
-    server {
-        listen 80;
-        server_name $domain;
-        return 301 https://\$host\$request_uri;
-    }
-
-    server {
-        listen 443 ssl;
-        server_name $domain;
-
-        ssl_certificate /etc/letsencrypt/live/$domain/fullchain.pem;
-        ssl_certificate_key /etc/letsencrypt/live/$domain/privkey.pem;
-
-        # Configuration HTTPS stricte
-        add_header Strict-Transport-Security \"max-age=31536000\";
-
-        location / {
-            proxy_pass http://localhost:8008;
-            proxy_set_header X-Forwarded-For \$remote_addr;
-        }
-    }
-    "
-    echo "$nginx_config" | tee /etc/nginx/sites-available/matrix
-    ln -s /etc/nginx/sites-available/matrix /etc/nginx/sites-enabled
-    systemctl reload nginx
-}
 
 # Activation et démarrage de Synapse
 systemctl enable matrix-synapse
@@ -121,7 +123,11 @@ systemctl start matrix-synapse
 if [[ $yn == 1 ]]; then
     echo "Votre serveur Synapse est maintenant accessible depuis Internet à l'adresse https://$domain"
 elif [[ $yn == 2 ]]; then
+    # Assurez-vous que Nginx est rechargé après la configuration pour le réseau interne
+    configure_nginx
     echo "Votre serveur Synapse est maintenant accessible en réseau interne à l'adresse http://$local_ip:8008"
 fi
 
 echo "L'installation de Synapse, Nginx, et le pare-feu est terminée. Veuillez utiliser l'URL ci-dessus pour vous connecter via Element."
+echo "Appuyez sur n'importe quelle touche pour continuer..."
+read -n 1 -s -r
