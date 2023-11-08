@@ -32,11 +32,14 @@ ufw enable
 ufw default deny incoming
 ufw default allow outgoing
 
-# Configuration de Nginx
+# Fonction de configuration de Nginx
 configure_nginx() {
     echo "Configuration de Nginx..."
     local server_name=$1
-    nginx_config="
+    local nginx_config_path="/etc/nginx/sites-available/matrix"
+    
+    # Écriture de la configuration de Nginx dans le fichier
+    cat > "$nginx_config_path" <<- EOF
 server {
     listen 80;
     server_name $server_name;
@@ -51,16 +54,17 @@ server {
     ssl_certificate_key /etc/letsencrypt/live/$server_name/privkey.pem;
 
     # Configuration HTTPS stricte
-    add_header Strict-Transport-Security \"max-age=31536000\";
+    add_header Strict-Transport-Security "max-age=31536000";
 
     location / {
         proxy_pass http://localhost:8008;
         proxy_set_header X-Forwarded-For \$remote_addr;
     }
 }
-"
-    echo "$nginx_config" | tee /etc/nginx/sites-available/matrix
-    ln -sf /etc/nginx/sites-available/matrix /etc/nginx/sites-enabled
+EOF
+
+    # Activation de la configuration de Nginx et rechargement du service
+    ln -sf "$nginx_config_path" /etc/nginx/sites-enabled/
     systemctl reload nginx
 }
 
@@ -99,30 +103,27 @@ case $yn in
         echo "Vous avez choisi une configuration de réseau interne."
         local_ip=$(hostname -I | cut -d' ' -f1)
         
-        # Configuration de Nginx avec l'adresse IP locale et sans SSL
         configure_nginx "$local_ip"
 
         # Autoriser le trafic interne sur le port 8008
         ufw allow from 192.168.0.0/16 to any port 8008
-        ufw allow from 192.168.0.0/16 to any port 8008
         ufw allow from 10.0.0.0/8 to any port 8008
         ufw allow from 172.16.0.0/12 to any port 8008
-        break
+
+        echo "Votre serveur Synapse est maintenant accessible en réseau interne à l'adresse http://$local_ip:8008"
         ;;
       * )
         echo "Choix invalide, veuillez entrer 1 ou 2."
         ;;
     esac
-done
 
 # Planification des sauvegardes hebdomadaires de la base de données
 backup_script="
 #!/bin/bash
-pg_dump matrix-synapse > /media/usb/matrix_backup_$(date +\%F).sql
+pg_dump matrix-synapse > /var/backups/matrix_backup_$(date +\%F).sql
 "
 echo "$backup_script" | sudo tee /etc/cron.weekly/matrix_backup.sh
 sudo chmod +x /etc/cron.weekly/matrix_backup.sh
-
 
 # Activation et démarrage de Synapse
 systemctl enable matrix-synapse
@@ -131,12 +132,8 @@ systemctl start matrix-synapse
 # Affichage de l'URL pour se connecter à Synapse via Element
 if [[ $yn == 1 ]]; then
     echo "Votre serveur Synapse est maintenant accessible depuis Internet à l'adresse https://$domain"
-elif [[ $yn == 2 ]]; then
-    # Assurez-vous de servir Synapse sur HTTP pour une configuration réseau interne
-    echo "Votre serveur Synapse est maintenant accessible en réseau interne à l'adresse http://$local_ip:8008"
 fi
 
-echo "L'installation de Synapse, Nginx, et le pare-feu est terminée. Veuillez utiliser l'URL ci-dessus pour vous connecter via Element."
+echo "L'installation de Synapse, Nginx, et le pare-feu est terminée."
 echo "Appuyez sur n'importe quelle touche pour continuer..."
 read -n 1 -s -r
-#!/bin/bash
