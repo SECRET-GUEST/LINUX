@@ -12,4 +12,9 @@ sudo certbot renew
 # Recharge la configuration de Nginx pour utiliser le nouveau certificat
 sudo systemctl reload nginx
 
-echo "Le certificat a été renouvelé et Nginx a été rechargé."
+# Vérifiez si Nginx fonctionne après le rechargement
+if systemctl is-active --quiet nginx; then
+    echo "Le certificat a été renouvelé et Nginx a été rechargé avec succès."
+else
+    echo "Il y a eu un problème lors du rechargement de Nginx. Veuillez vérifier manuellement."
+fi
