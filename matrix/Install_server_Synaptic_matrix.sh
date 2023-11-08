@@ -139,3 +139,4 @@ fi
 echo "L'installation de Synapse, Nginx, et le pare-feu est terminée. Veuillez utiliser l'URL ci-dessus pour vous connecter via Element."
 echo "Appuyez sur n'importe quelle touche pour continuer..."
 read -n 1 -s -r
+#!/bin/bash
