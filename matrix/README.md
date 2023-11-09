@@ -42,7 +42,7 @@ sudo ./install_server_synaptic_matrix.sh
 
 ### Renouvellement du certificat SSL
 
-Le script `install_server_synaptic_matrix.sh` configure une tâche cron pour renouveler automatiquement le certificat SSL. Vous n'avez rien à faire de plus à ce sujet.
+Le script `install_server_synaptic_matrix.sh` configure une tâche cron pour renouveler automatiquement le certificat SSL, mais au besoin (c'est déconseillé puisque certbot a une fonction pour éviter le flood) vous pouvez toujours utiliser le fichier pour en créer un nouveau.
 
 ## 📝 Notes Importantes
 
