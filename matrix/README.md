@@ -6,64 +6,46 @@
 ██║ ╚═╝ ██║██║  ██║   ██║   ██║  ██║██║██╔╝ ██╗    ███████║███████╗██║  ██║ ╚████╔╝ ███████╗██║  ██║
 ╚═╝     ╚═╝╚═╝  ╚═╝   ╚═╝   ╚═╝  ╚═╝╚═╝╚═╝  ╚═╝    ╚══════╝╚══════╝╚═╝  ╚═╝  ╚═══╝  ╚══════╝╚═╝  ╚═╝
 ```
-
 # Serveur Synapse pour Matrix
 
-Ce dossier contient des scripts qui facilitent l'installation, la gestion, et le renouvellement du certificat SSL pour un serveur Synapse de Matrix sur votre Raspberry Pi. Voici une description de chaque script et des instructions sur la manière de les utiliser.
+Ce dépôt contient un script pour faciliter l'installation, la configuration et la gestion d'un serveur Synapse de Matrix sur votre Raspberry Pi, et pour maintenir à jour le certificat SSL.
 
+## 💎 Recommandations
 
-## 💎 Recommendations
+Avant de lancer le script, assurez-vous que votre Raspberry Pi est à jour et que le nom de domaine souhaité pointe vers l'adresse IP de votre Pi.
 
-Vous pouvez utiliser [ce lanceur de script ](https://github.com/SECRET-GUEST/tiny-scripts/tree/ALL/linux/launchers/script%20launcher) pour exécuter ces scripts facilement via un terminal. Ce truc liste tous les scripts du dossier et vous permet de choisir celui que vous souhaitez exécuter.
+## 🚀 Script d'installation et de configuration
 
+### `install_server_synaptic_matrix.sh`
 
-## 1. Install_server_Synaptic_matrix.sh
+Ce script effectue les actions suivantes :
+- Installe Synapse, Nginx, et Certbot.
+- Configure Nginx pour servir Synapse en HTTPS.
+- Configure le pare-feu UFW.
+- Configure `.pgpass` pour une authentification automatique à PostgreSQL.
+- Demande une confirmation pour le mot de passe de la base de données.
+- Planifie une tâche cron pour la sauvegarde hebdomadaire de la base de données.
 
-Ce script automatise l'installation de Synapse, de Nginx, et de Certbot. Il configure également Nginx pour servir Synapse, obtient un certificat SSL avec Certbot, et configure le pare-feu UFW.
-
-**Utilisation** :
+**Usage** :
 ```bash
-chmod +x Install_server_Synaptic_matrix.sh
-./Install_server_Synaptic_matrix.sh
+chmod +x install_server_synaptic_matrix.sh
+sudo ./install_server_synaptic_matrix.sh
 ```
 
 **Notes** :
-- Vous devrez fournir le nom de domaine de votre serveur Matrix lors de l'exécution du script.
-- Assurez-vous que le nom de domaine pointe vers l'adresse IP de votre Raspberry Pi avant d'exécuter le script.
+- Fournissez le nom de domaine de votre serveur Matrix lors de l'exécution.
+- Si vous souhaitez une configuration en réseau interne, laissez le champ du nom de domaine vide.
+- Le script demandera la confirmation du mot de passe de la base de données pour éviter les erreurs de saisie.
+- Le script demandera le chemin de sauvegarde des données de la base de données.
 
-## 2. renew_cert.sh
+## 🛠 Maintenance
 
-Ce script permet de renouveler le certificat SSL de votre serveur. Il est conseillé de configurer une tâche cron pour exécuter ce script régulièrement.
+### Renouvellement du certificat SSL
 
-**Utilisation** :
-```bash
-chmod +x renew_cert.sh
-./renew_cert.sh
-```
+Le script `install_server_synaptic_matrix.sh` configure une tâche cron pour renouveler automatiquement le certificat SSL, mais au besoin (c'est déconseillé puisque certbot a une fonction pour éviter le flood) vous pouvez toujours utiliser le fichier pour en créer un nouveau.
 
-**Configurer une tâche Cron pour le renouvellement automatique** :
-```bash
-crontab -e
-```
-Ajoutez la ligne suivante pour renouveler le certificat tous les jours à 2h du matin :
-```bash
-0 2 * * * /chemin/vers/le/script/renew_cert.sh
-```
+## 📝 Notes Importantes
 
-## 3. start_server.sh
+Exécutez le script en tant que superutilisateur (root) pour vous assurer qu'il peut effectuer toutes les opérations nécessaires sans restrictions de permissions.
 
-Ce script lance le serveur Synapse et Nginx, et crée un fichier de logs sur le bureau.
-
-**Utilisation** :
-```bash
-chmod +x start_server.sh
-./start_server.sh
-```
-
-**Notes** :
-- Ce script doit être exécuté chaque fois que vous souhaitez démarrer votre serveur Synapse.
-- Un fichier `error.logs` sera créé sur votre bureau, qui contiendra les logs du serveur.
-
----
-
-Ces scripts simplifient grandement le processus d'installation et de gestion de votre serveur Synapse sur Raspberry Pi. Assurez-vous de lire et de comprendre les scripts avant de les exécuter, et n'hésitez pas à les modifier selon vos besoins spécifiques.
+Les scripts sont conçus pour faciliter l'installation et la maintenance du serveur Synapse sur le Raspberry Pi. Il est recommandé de comprendre le contenu du script avant de l'exécuter. N'hésitez pas à ajuster le script 

@@ -1,20 +1,70 @@
 #!/bin/bash
 
-# Vérifie si le script est exécuté en tant que root
+# Ce script est destiné à être exécuté avec des privilèges de superutilisateur
 if [[ $EUID -ne 0 ]]; then
-   echo "Ce script doit être exécuté en tant que root" 
+   echo "Ce script doit être exécuté avec des privilèges de superutilisateur."
    exit 1
 fi
 
-# Démarrage de Synapse et Nginx
-sudo systemctl start matrix-synapse
-sudo systemctl start nginx
+# Fonction pour démarrer le serveur Synapse
+start_synapse() {
+    echo "Démarrage du serveur Synapse..."
+    systemctl start matrix-synapse
+    systemctl start nginx
+    echo "Le serveur Synapse est démarré."
+}
 
-# Récupération de l'adresse IP publique
-public_ip=$(curl -s http://ifconfig.me)
+# Fonction pour arrêter le serveur Synapse
+stop_synapse() {
+    echo "Arrêt du serveur Synapse..."
+    systemctl stop matrix-synapse
+    systemctl stop nginx
+    echo "Le serveur Synapse a été arrêté."
+}
 
-# Affichage du nom de domaine pour l'accès via Element
-echo "Pour accéder à votre serveur Matrix via Element, utilisez l'adresse : https://$public_ip" > ~/Desktop/error.logs
+# Fonction pour charger une base de données
+load_database() {
+    echo "Veuillez entrer l'URL de la base de données :"
+    read -r db_url
+    # Ici, vous devez ajouter votre logique pour valider l'URL et charger la base de données.
+    echo "Si l'URL est valide, la base de données sera chargée ici."
+}
 
-# Ajout des logs de Synapse au fichier error.logs
-sudo journalctl -u matrix-synapse -f >> ~/Desktop/error.logs &
+# Fonction pour nettoyer avant de quitter
+cleanup() {
+    echo "Nettoyage et arrêt du serveur Synapse..."
+    stop_synapse
+    echo "Script terminé. Le serveur Synapse a été arrêté."
+    exit 0
+}
+
+# Piège les signaux SIGINT et SIGTERM pour exécuter la fonction cleanup avant de quitter
+trap cleanup SIGINT SIGTERM
+
+# Menu principal
+while true; do
+    echo "Que souhaitez-vous faire ?"
+    echo "1) Lancer le serveur Synapse"
+    echo "2) Arrêter le serveur Synapse"
+    echo "3) Charger une base de données"
+    echo "4) Quitter"
+    read -p "Sélectionnez une option : " choice
+
+    case $choice in
+        1)
+            start_synapse
+            ;;
+        2)
+            stop_synapse
+            ;;
+        3)
+            load_database
+            ;;
+        4)
+            cleanup
+            ;;
+        *)
+            echo "Choix invalide. Veuillez entrer 1, 2, 3 ou 4."
+            ;;
+    esac
+done
