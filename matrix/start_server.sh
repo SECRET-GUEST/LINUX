@@ -11,7 +11,7 @@ start_synapse() {
     echo "Démarrage du serveur Synapse..."
     systemctl start matrix-synapse
     systemctl start nginx
-    echo "Le serveur Synapse est démarré et restera actif tant que ce script est ouvert."
+    echo "Le serveur Synapse est démarré."
 }
 
 # Fonction pour arrêter le serveur Synapse
@@ -26,7 +26,7 @@ stop_synapse() {
 load_database() {
     echo "Veuillez entrer l'URL de la base de données :"
     read -r db_url
-    # Ajoutez ici la logique de validation de l'URL et de chargement de la base de données.
+    # Ici, vous devez ajouter votre logique pour valider l'URL et charger la base de données.
     echo "Si l'URL est valide, la base de données sera chargée ici."
 }
 
@@ -53,9 +53,6 @@ while true; do
     case $choice in
         1)
             start_synapse
-            # Attendez ici indéfiniment jusqu'à ce que l'utilisateur interrompe le script
-            echo "Appuyez sur [CTRL+C] pour arrêter le serveur Synapse et quitter."
-            while true; do sleep 1; done
             ;;
         2)
             stop_synapse
