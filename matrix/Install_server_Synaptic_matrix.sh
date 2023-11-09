@@ -2,28 +2,48 @@
 
 # Vérification des privilèges root
 if [[ $EUID -ne 0 ]]; then
-   echo "Ce script doit être exécuté avec des privilèges de superutilisateur."
-   exit 1
+    echo "Ce script doit être exécuté avec des privilèges de superutilisateur."
+    exit 1
 fi
 
 # Demande des informations initiales à l'utilisateur
+clear
 echo "Bienvenue dans la configuration de votre serveur Synapse Matrix."
 read -p "Entrez le nom de domaine pour votre serveur Matrix (laissez vide pour une configuration en réseau interne): " domain
 
-# Déterminez si l'accès est public ou local en fonction de la présence d'un nom de domaine
+yn="public"  # Mode par défaut est public
 if [[ -z "$domain" ]]; then
     yn="local"
     domain=$(hostname -I | cut -d' ' -f1)  # Utilisez l'adresse IP locale si aucun nom de domaine n'est fourni
-else
-    yn="public"
-    read -p "Entrez le nom de l'utilisateur de la base de données pour Synapse: " synapse_db_user
-    read -s -p "Entrez le mot de passe pour l'utilisateur de la base de données Synapse: " synapse_db_password
-    echo
+    clear
 fi
+
+if [[ $yn == "public" ]]; then
+    read -p "Entrez le nom de l'utilisateur de la base de données pour Synapse: " synapse_db_user
+    while true; do
+        read -s -p "Entrez le mot de passe pour l'utilisateur de la base de données Synapse: " synapse_db_password
+        echo
+        read -s -p "Confirmez le mot de passe: " synapse_db_password_confirm
+        echo
+        if [[ $synapse_db_password == $synapse_db_password_confirm ]]; then
+            break
+        else
+            echo "Les mots de passe ne correspondent pas. Veuillez réessayer."
+        fi
+    done
+fi
+
+# Configuration de .pgpass pour l'authentification automatique de la base de données
+PGPASSFILE="/var/lib/postgresql/.pgpass"  # ou "/root/.pgpass" si vous exécutez en tant que root
+echo "*:*:*:$synapse_db_user:$synapse_db_password" > "$PGPASSFILE"
+chmod 600 "$PGPASSFILE"
+chown postgres:postgres "$PGPASSFILE" 
 
 # Demandez le chemin pour les sauvegardes de la base de données
 read -p "Entrez le chemin complet pour les sauvegardes de la base de données Synapse: " backup_path
-mkdir -p "$backup_path" 
+mkdir -p "$backup_path"
+
+clear
 
 # Continuez avec la mise à jour et l'installation
 echo "Mise à jour des paquets système et installation des dépendances..."
@@ -170,10 +190,21 @@ systemctl restart matrix-synapse
 backup_script="/etc/cron.weekly/synapse_backup.sh"
 cat > "$backup_script" <<EOF
 #!/bin/bash
-pg_dump -U $synapse_db_user $synapse_db_user > "$backup_path/synapse_backup_\$(date +\%Y\%m\%d).sql"
+# Script de sauvegarde pour Synapse Matrix Server
+
+# Vérification de la présence du fichier .pgpass
+PGPASSFILE="/var/lib/postgresql/.pgpass"  # ou "/root/.pgpass" si c'est root
+if [ ! -f "\$PGPASSFILE" ] || [ "\$(stat -c %a \$PGPASSFILE)" != "600" ]; then
+    echo "Le fichier .pgpass est manquant ou a des permissions incorrectes."
+    exit 1
+fi
+
+# Exécution de la sauvegarde
+pg_dump -U $synapse_db_user synapse_db > "$backup_path/synapse_backup_\$(date +\%Y\%m\%d).sql"
 EOF
 chmod +x "$backup_script"
 echo "La sauvegarde hebdomadaire est configurée au chemin suivant : $backup_path"
+
 
 # Affichez l'URL pour se connecter à Synapse via Element
 if [[ $yn == "public" ]]; then
