@@ -21,6 +21,9 @@ Votre contribution à cette initiative est la bienvenue, que ce soit en partagea
 
 N'hésitez pas à explorer les différentes branches de ce dépôt, et à télécharger la documentation qui correspond à vos besoins.
 
+#### [Par ailleurs, si vous recherchez un guide pour créer votre pc fixe, rendez vous ici ](https://github.com/SECRET-GUEST/tiny-scripts/blob/ALL/hardware/FR%20PC%20fixe/README.md)
+
+
 | Nom            | Description                                                  | Lien                                                             | Clone Git                                                            |
 |----------------|--------------------------------------------------------------|-------------------------------------------------------------------|----------------------------------------------------------------------|
 | Ubuntu         | Tutoriels pour l'installation et la configuration d'Ubuntu sur une machine standard. | [Voir la branche](https://github.com/SECRET-GUEST/LINUX/tree/Ubuntu) | ```git clone -b Ubuntu https://github.com/SECRET-GUEST/LINUX.git```     |
