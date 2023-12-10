@@ -596,6 +596,8 @@ Bref, c'est plus intéressant d'appuyer sur 2 touches pour faire tout ça **Wind
     echo -e "#!/bin/bash\nchmod +x \"\$1\"" > /home/VOTRE_NOM_D'UTILISATEUR/.local/share/nautilus/scripts/chmodX.sh && chmod +x /home/VOTRE_NOM_D'UTILISATEUR/.local/share/nautilus/scripts/chmodX.sh
     ```
 
+  [Rendez vous ici pour des exemples de scripts ](https://github.com/SECRET-GUEST/tiny-scripts/tree/ALL/linux/nautilus%20scripts)
+
 2. **Rendre le Script Exécutable** :
     ```bash
     chmod +x "/home/VOTRE_NOM_D'UTILISATEUR/.local/share/nautilus/scripts/NOM_DU_SCRIPT.sh"
