@@ -49,6 +49,7 @@
 1. [Maintenance de Syslog](#maintenance-de-syslog)
 2. [Sauvegarde et Restauration des Données](#sauvegarde-et-restauration-des-données)
 3. [Autres Méthodes de Sauvegarde et Restauration](#autres-méthodes-de-sauvegarde-et-restauration)
+4. [Réinstallation des Pilotes de Carte Graphique](#réinstallation-des-pilotes-de-carte-graphique)
 
 ## [Guide du partage de données](#guide-du-partage-de-données)
 
@@ -917,6 +918,42 @@ Bacula et Bareos sont des solutions de sauvegarde et de restauration en réseau 
   - Avec une interface CLI ou GUI, vous pouvez gérer les tâches de sauvegarde et de restauration, planifier des sauvegardes régulières, et restaurer des données en cas de besoin.
 
 
+### Réinstallation des Pilotes de Carte Graphique NVIDIA sous Ubuntu
+
+Dans le cadre de la maintenance et de la résolution des erreurs sur Ubuntu, la réinstallation des pilotes de carte graphique NVIDIA peut s'avérer nécessaire, surtout en cas de problèmes d'affichage ou après une mise à jour système. Ce processus implique la mise à jour du système, la suppression des pilotes NVIDIA existants, et l'installation des pilotes les plus adaptés à votre matériel.
+
+#### Script de Réinstallation :
+
+```bash
+#!/bin/bash
+
+# Mise à jour et amélioration du système
+echo "Mise à jour et amélioration du système..."
+sudo apt update && sudo apt upgrade -y
+sudo apt autoremove -y
+
+# Suppression des pilotes NVIDIA existants
+echo "Suppression des pilotes NVIDIA existants..."
+sudo apt-get remove --purge nvidia*
+
+# Ajout du dépôt PPA pour les pilotes NVIDIA
+echo "Ajout du dépôt PPA pour les pilotes NVIDIA..."
+sudo add-apt-repository ppa:graphics-drivers/ppa -y
+
+# Mise à jour des paquets et du système
+echo "Mise à jour des paquets et du système..."
+sudo apt update && sudo apt upgrade -y
+
+# Installation automatique du pilote recommandé
+echo "Installation automatique du pilote recommandé..."
+sudo ubuntu-drivers autoinstall
+
+# Redémarrage du système
+echo "Redémarrage du système..."
+sudo reboot
+```
+
+Ce script automatise l'ensemble du processus de réinstallation du pilote, ce qui peut aider à résoudre de nombreux problèmes liés à la carte graphique NVIDIA sous Ubuntu.
 
 
 ---
