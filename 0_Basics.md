@@ -955,6 +955,8 @@ sudo reboot
 
 Ce script automatise l'ensemble du processus de réinstallation du pilote, ce qui peut aider à résoudre de nombreux problèmes liés à la carte graphique NVIDIA sous Ubuntu.
 
+Pour l'utiliser il suffit de créer un nouveau document `.sh`, puis de lui donner les droits d'execution ( `chmod +x` , ou via les propriétés dans le menu grapique, puis de l'executer dans le terminal avec les privilèges utilisateurs ; `sudo + ./le_script.sh` .
+
 
 ---
 ---
