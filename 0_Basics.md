@@ -49,7 +49,7 @@
 1. [Maintenance de Syslog](#maintenance-de-syslog)
 2. [Sauvegarde et Restauration des Données](#sauvegarde-et-restauration-des-données)
 3. [Autres Méthodes de Sauvegarde et Restauration](#autres-méthodes-de-sauvegarde-et-restauration)
-4. [Réinstallation des Pilotes de Carte Graphique](#réinstallation-des-pilotes-de-carte-graphique)
+4. [Réinstallation des Pilotes de Carte Graphique NVIDIA](#réinstallation-des-pilotes-de-carte-graphique-nvidia)
 
 ## [Guide du partage de données](#guide-du-partage-de-données)
 
@@ -918,7 +918,7 @@ Bacula et Bareos sont des solutions de sauvegarde et de restauration en réseau 
   - Avec une interface CLI ou GUI, vous pouvez gérer les tâches de sauvegarde et de restauration, planifier des sauvegardes régulières, et restaurer des données en cas de besoin.
 
 
-### Réinstallation des Pilotes de Carte Graphique NVIDIA sous Ubuntu
+## Réinstallation des Pilotes de Carte Graphique NVIDIA
 
 Dans le cadre de la maintenance et de la résolution des erreurs sur Ubuntu, la réinstallation des pilotes de carte graphique NVIDIA peut s'avérer nécessaire, surtout en cas de problèmes d'affichage ou après une mise à jour système. Ce processus implique la mise à jour du système, la suppression des pilotes NVIDIA existants, et l'installation des pilotes les plus adaptés à votre matériel.
 
