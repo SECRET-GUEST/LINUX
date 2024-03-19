@@ -53,7 +53,7 @@
 
 ## [Guide de Gestion des Crashs](#guide-de-gestion-des-crashs)
 
-1. [Freeze de l'Interface Graphique](#freeze-de-l-interface-graphique)
+1. [Freeze de l'Interface Graphique](#freeze-de-linterface-graphique)
 
 ## [Guide du partage de données](#guide-du-partage-de-données)
 
