@@ -51,6 +51,10 @@
 3. [Autres Méthodes de Sauvegarde et Restauration](#autres-méthodes-de-sauvegarde-et-restauration)
 4. [Réinstallation des Pilotes de Carte Graphique NVIDIA](#réinstallation-des-pilotes-de-carte-graphique-nvidia)
 
+## [Guide de Gestion des Crashs](#guide-de-gestion-des-crashs)
+
+1. [Freeze de l'Interface Graphique](#freeze-de-l-interface-graphique)
+
 ## [Guide du partage de données](#guide-du-partage-de-données)
 
 1. [Configuration du Serveur avec RealVNC](#configuration-du-serveur-avec-realvnc)
@@ -956,6 +960,62 @@ sudo reboot
 Ce script automatise l'ensemble du processus de réinstallation du pilote, ce qui peut aider à résoudre de nombreux problèmes liés à la carte graphique NVIDIA sous Ubuntu.
 
 Pour l'utiliser il suffit de créer un nouveau document `.sh`, puis de lui donner les droits d'execution ( `chmod +x` , ou via les propriétés dans le menu grapique, puis de l'executer dans le terminal avec les privilèges utilisateurs ; `sudo + ./le_script.sh` .
+
+---
+---
+---
+```markdown
+____ ____ ____ ____ ____ ____ 
+|___ |__/ |__/ |  | |__/ [__  
+|___ |  \ |  \ |__| |  \ ___] 
+                                    
+```
+
+[Retour au Sommaire](#sommaire)
+
+# Guide de Gestion des Crashs
+
+Ce guide propose plusieurs procédures pour gérer les crashs système et les problèmes de performance sur Ubuntu, avec un accent particulier sur les problèmes liés à l'interface graphique GNOME Shell.
+
+---
+
+## Freeze de l'Interface Graphique
+
+Les freezes de l'interface graphique peuvent se produire pour diverses raisons, notamment des problèmes avec GNOME Shell ou des fuites de mémoire. Voici quelques méthodes pour gérer ces situations sans avoir à redémarrer complètement votre système.
+
+### Relancer GNOME Shell
+
+Si GNOME Shell se fige ou devient non réactif, surtout après avoir connecté un second écran comme une smart TV, vous pouvez le relancer :
+
+```bash
+killall -3 gnome-shell
+sleep 2
+gnome-shell --replace &
+```
+
+- `killall -3 gnome-shell` : Envoie un signal pour arrêter proprement l'instance actuelle de GNOME Shell.
+- `sleep 2` : Attend deux secondes pour que le processus se termine correctement.
+- `gnome-shell --replace &` : Relance GNOME Shell en arrière-plan.
+
+### Libérer la Mémoire Cache
+
+Libérer la mémoire cache peut aider à résoudre les problèmes de performance ou de mémoire sans redémarrer :
+
+```bash
+sudo sh -c 'echo 1 > /proc/sys/vm/drop_caches'
+```
+
+Cette commande vide les caches du système de manière sécurisée.
+
+### Redémarrer le Gestionnaire de Connexion
+
+En cas d'impossibilité d'accéder à votre environnement de bureau ou si le système est complètement bloqué :
+
+```bash
+sudo systemctl restart gdm
+```
+
+Remplacez `gdm` par le nom de votre gestionnaire de connexion si nécessaire.
 
 
 ---
