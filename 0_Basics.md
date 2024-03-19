@@ -997,6 +997,12 @@ gnome-shell --replace &
 - `sleep 2` : Attend deux secondes pour que le processus se termine correctement.
 - `gnome-shell --replace &` : Relance GNOME Shell en arrière-plan.
 
+Alternativement vous pouvez également l'utiliser comme raccourcis clavier directement dans gnome ; 
+
+```bash
+gnome-terminal -- bash -c "killall -3 gnome-shell; sleep 2; gnome-shell --replace &"
+```
+
 ### Libérer la Mémoire Cache
 
 Libérer la mémoire cache peut aider à résoudre les problèmes de performance ou de mémoire sans redémarrer :
