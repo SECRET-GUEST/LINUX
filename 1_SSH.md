@@ -1,6 +1,6 @@
 # Configuration d'une Connexion SSH Sécurisée
 
-Ce guide explique comment configurer une connexion SSH sécurisée entre un ordinateur sous Windows, Linux ou macOS (client) et un serveur sous Linux (Arch Linux ou autre). Il inclut les étapes pour générer une clé RSA de haute sécurité, restreindre l'accès uniquement à cette clé, modifier le port SSH pour plus de sécurité, et activer SSH au démarrage du serveur.
+Ce guide explique comment configurer une connexion SSH sécurisée entre un ordinateur sous Windows, Linux ou macOS (client) et un serveur sous Linux (raspberry ou autre). Il inclut les étapes pour générer une clé RSA de haute sécurité, restreindre l'accès uniquement à cette clé, modifier le port SSH pour plus de sécurité, et activer SSH au démarrage du serveur.
 
 ---
 
