@@ -376,7 +376,7 @@ Sélectionnez "<Yes>" lorsqu'il vous sera demandé d'activer les mises à jour a
 ### Autres Astuces de Sécurité
 - **Audit régulier du système :** Exécutez régulièrement des outils d'audit de sécurité tels que Lynis pour identifier et corriger les vulnérabilités.
 - **Restriction des privilèges :** Utilisez le principe du moindre privilège et n'accordez les droits d'administration qu'aux utilisateurs qui en ont besoin.
-- **Méthodes d'authentification robustes :** Mettez en place une authentification à deux facteurs et utilisez des clés SSH pour les connexions à distance.
+- **Méthodes d'authentification robustes :** Mettez en place une authentification à deux facteurs et utilisez des clés SSH pour les connexions à distance, [un tutoriel pour cala est disponnible ici](https://github.com/SECRET-GUEST/LINUX/blob/Ubuntu/1_SSH.md).
 
 ### Pare-feu et outils de sécurité
 
