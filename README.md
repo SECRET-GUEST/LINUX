@@ -1,4 +1,4 @@
-![LINUX](https://img.shields.io/badge/UBUNTU-orange)
+[![Ubuntu](https://img.shields.io/badge/Ubuntu%20LTS-E95420?logo=ubuntu&logoColor=white&style=for-the-badge)](https://releases.ubuntu.com/noble/)
 ```
 ██╗   ██╗██████╗ ██╗   ██╗███╗   ██╗████████╗██╗   ██╗
 ██║   ██║██╔══██╗██║   ██║████╗  ██║╚══██╔══╝██║   ██║
