@@ -13,9 +13,9 @@
 
 ## [Guide des bases de Linux](#guide-des-bases-de-linux)
 
-1. [Introduction et Ressources](#introduction-et-ressources)
+1. [Introduction et Ressources](#introduction)
 2. [Mise à jour du système](#mise-à-jour-du-système)
-3. [Installation de logiciels et Paquets Debian](#installation-de-logiciels-et-paquets-debian)
+3. [Installation de logiciels et Paquets Debian](#installation-de-logiciels)
 4. [Navigation dans le système de fichiers](#navigation-dans-le-système-de-fichiers)
 
 ## [Guide sur la cybersécurité du système](#guide-sur-la-cybersécurité-du-système)
@@ -54,6 +54,7 @@
 ## [Guide de Gestion des Crashs](#guide-de-gestion-des-crashs)
 
 1. [Freeze de l'Interface Graphique](#freeze-de-linterface-graphique)
+2. [audiojack non reconnu](#fix-audio-jack-alc408x)
 
 ## [Guide du partage de données](#guide-du-partage-de-données)
 
@@ -231,7 +232,7 @@ La première étape consiste à mettre à jour votre système. Ouvrez le termina
 sudo apt update && sudo apt upgrade
 ```
 
-## Installation de logiciels : Préférez les paquets Debian
+## Installation de logiciels
 
 Pour installer des logiciels, il est conseillé d'utiliser les paquets Debian plutôt que Snap. Pour plus de détails, consultez le [Guide d'Installation d'Applications sur Ubuntu/Debian](#guide-dinstallation-dapplications-sur-ubuntudebian).
 
@@ -1022,6 +1023,64 @@ sudo systemctl restart gdm
 ```
 
 Remplacez `gdm` par le nom de votre gestionnaire de connexion si nécessaire.
+
+## Fix Audio Jack (ALC408x)
+
+> Certaines cartes mères récentes (ASUS/MSI, etc.) utilisent les codecs **ALC4080/ALC4082** en **USB**. ALSA expose plusieurs périphériques PCM sur la même carte et PipeWire/Pulse peut sélectionner le **mauvais** → tout semble OK mais **aucun son** ne sort sur les jacks analogiques.
+
+> 👉 Guide détaillé et explications : **[README\_FR – fix alc408x](https://github.com/SECRET-GUEST/tiny-scripts/blob/ALL/linux/Debug/fix%20alc408x/README_FR.md)**
+
+### ⚡ Correctif rapide (copier/coller)
+
+1. **Trouver le PCM qui émet réellement du son**
+
+```bash
+aplay -l   # repérez la carte nommée "Audio" (USB)
+for d in 0 1 2 3; do
+  echo "Test de plughw:Audio,$d"
+  aplay -D plughw:Audio,$d /usr/share/sounds/alsa/Front_Center.wav || true
+done
+# Notez la valeur <d> qui fait entendre “Front Center” (ex. 1)
+```
+
+2. **Forcer ce PCM par défaut (persistant)**
+
+```bash
+sudo tee /etc/asound.conf >/dev/null <<'EOF'
+pcm.!default { type plug slave.pcm "hw:Audio,1" }  # remplacez 1 si besoin
+ctl.!default { type hw card "Audio" }
+EOF
+```
+
+3. **Redémarrer l’audio & définir le “sink” par défaut**
+
+```bash
+systemctl --user restart wireplumber pipewire pipewire-pulse 2>/dev/null || true
+pactl list short sinks
+# choisissez le sink USB listé puis :
+pactl set-default-sink "alsa_output.usb-Generic_USB_Audio-00.HiFi__hw_Audio__sink"
+paplay /usr/share/sounds/alsa/Front_Center.wav
+```
+
+✅ Si vous entendez le son, c’est corrigé.
+
+### 🔎 Vérifications utiles
+
+```bash
+aplay -l                      # cartes/PCMs détectés
+pactl list short sinks        # sorties audio vues par PipeWire/Pulse
+cat /proc/asound/cards        # noms ALSA (utilisez "Audio", pas l’index numérique)
+```
+
+### ↩️ Annuler le correctif
+
+```bash
+sudo rm -f /etc/asound.conf
+systemctl --user restart wireplumber pipewire pipewire-pulse 2>/dev/null || true
+```
+
+> 💡 Pourquoi ça marche : on **épingle le bon PCM** (souvent `hw:Audio,1`) au niveau ALSA. C’est plus fiable que l’auto-détection UCM/PipeWire qui oriente parfois vers SPDIF ou un périphérique muet. Pour la théorie, cas limites et alternatives :
+> **[consultez le guide complet](https://github.com/SECRET-GUEST/tiny-scripts/blob/ALL/linux/Debug/fix%20alc408x/README_FR.md)**.
 
 
 ---
