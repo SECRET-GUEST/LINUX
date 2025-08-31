@@ -709,9 +709,55 @@ Les applications peuvent provenir de divers gestionnaires de paquets. Il est rec
 - **Installation et Usage de Vim** :
     ```bash
     sudo apt update
-    sudo apt install vim
+    sudo apt install vim-gtk3
     sudo vim /home/UTILISATEUR1/desktop/internet.py  # pour créer/ouvrir un fichier
     ```
+    
+  ### Commandes VIM - gtk3
+    #### Copier / Couper / Coller   
+    
+
+     Copier une ligne → `yy`    
+
+     Copier N lignes → `Nyy` (ex. `5yy` copie 5 lignes) 
+
+     Copier un bloc sélectionné → `V … j/k … y` 
+
+     Copier tout le fichier → `:%y+`    
+    
+    
+
+     Couper une ligne → `dd`    
+
+     Couper N lignes → `Ndd`    
+    
+    
+
+     Coller après le curseur → `p`  
+
+    --- 
+
+    #### Sélection  
+
+     Sélection caractère par caractère → `v` puis déplacer le curseur
+     Sélection ligne par ligne → `V` puis déplacer le curseur (`j/k`)
+     Sélectionner tout le fichier → `ggVG`  
+
+    --- 
+
+    #### Annuler / Refaire  
+
+     Annuler (Ctrl+Z) → `u`
+     Refaire (Ctrl+Y / Ctrl+Shift+Z) → `Ctrl + r`   
+
+    --- 
+
+    #### Rechercher / Remplacer 
+
+      ```
+      :%s/ancien/nouveau/g
+      ```
+
 
 ## Définir Brave ou un autre Navigateur comme Navigateur par Défaut
 
