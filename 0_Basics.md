@@ -55,6 +55,7 @@
 
 1. [Freeze de l'Interface Graphique](#freeze-de-linterface-graphique)
 2. [audiojack non reconnu](#fix-audio-jack-alc408x)
+3. [Micro (bird UM1) usb non reconnu](#fix-micro-usb)
 
 ## [Guide du partage de données](#guide-du-partage-de-données)
 
@@ -1127,6 +1128,87 @@ systemctl --user restart wireplumber pipewire pipewire-pulse 2>/dev/null || true
 
 > 💡 Pourquoi ça marche : on **épingle le bon PCM** (souvent `hw:Audio,1`) au niveau ALSA. C’est plus fiable que l’auto-détection UCM/PipeWire qui oriente parfois vers SPDIF ou un périphérique muet. Pour la théorie, cas limites et alternatives :
 > **[consultez le guide complet](https://github.com/SECRET-GUEST/tiny-scripts/blob/ALL/linux/Debug/fix%20alc408x/README_FR.md)**.
+
+
+## Fix micro USB
+
+Pour l'exemple je vais utiliser le micro USB BIRD UM1 puisque ce probleme peut s'avérer assez spécifique, cependant c'est reproductible pour n'importe quel autre micro.
+
+### Symptôme
+
+* Le micro **BIRD UM1** est détecté (`arecord -l`)
+* Il fonctionne en terminal
+* **Brave / Chrome affichent “aucun micro disponible”**
+
+---
+
+### Vérification de base (matériel OK)
+
+```bash
+arecord -l
+```
+
+Tu dois voir :
+
+```
+carte 3 : UM1 [BIRD UM1]
+```
+
+---
+
+### Activer le micro côté PipeWire (étape clé)
+
+1. Vérifier la carte :
+
+```bash
+pactl list short cards
+```
+
+Tu dois voir :
+
+```
+alsa_card.usb-BIRD_UM1_BIRD_UM1-00
+```
+
+2. **Activer le seul profil valide** (obligatoire) :
+
+```bash
+pactl set-card-profile alsa_card.usb-BIRD_UM1_BIRD_UM1-00 pro-audio
+```
+
+3. Redémarrer PipeWire :
+
+```bash
+systemctl --user restart pipewire pipewire-pulse
+```
+
+---
+
+### Sélectionner la bonne source micro
+
+1. Lister les sources :
+
+```bash
+pactl list short sources | grep -i um1
+```
+
+Tu dois voir une source du type :
+
+```
+alsa_input.usb-BIRD_UM1_BIRD_UM1-00.pro-input-0
+```
+
+2. La définir comme source par défaut :
+
+```bash
+pactl set-default-source alsa_input.usb-BIRD_UM1_BIRD_UM1-00.pro-input-0
+```
+
+Vérification :
+
+```bash
+pactl info | grep "Default Source"
+```
 
 
 ---
