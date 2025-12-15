@@ -1179,7 +1179,6 @@ pactl set-card-profile alsa_card.usb-BIRD_UM1_BIRD_UM1-00 input:mono-fallback
 ✔ stable après reboot
 ✔ ne casse pas l’audio système
 
----
 
 #### ❌ Profil à éviter en usage normal : `pro-audio`
 
