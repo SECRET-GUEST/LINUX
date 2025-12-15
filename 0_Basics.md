@@ -1132,70 +1132,77 @@ systemctl --user restart wireplumber pipewire pipewire-pulse 2>/dev/null || true
 
 ## Fix micro USB
 
-Pour l'exemple je vais utiliser le micro USB BIRD UM1 puisque ce probleme peut s'avérer assez spécifique, cependant c'est reproductible pour n'importe quel autre micro.
-
 ### Symptôme
 
-* Le micro **BIRD UM1** est détecté (`arecord -l`)
-* Il fonctionne en terminal
-* **Brave / Chrome affichent “aucun micro disponible”**
+* le micro USB est visible via `arecord -l`
+* fonctionne en terminal
+* **absent dans Chrome / Brave / Firefox**
 
-### Vérification de base (matériel OK)
+Exemple : **BIRD UM1**
+(valable pour la majorité des micros USB)
+
+### Vérification matérielle
 
 ```bash
 arecord -l
 ```
 
-Tu dois voir :
+Exemple :
 
 ```
-carte 3 : UM1 [BIRD UM1]
+card 3: UM1 [BIRD UM1]
 ```
 
-### Activer le micro côté PipeWire (étape clé)
 
-1. Vérifier la carte :
+### Vérifier la carte PipeWire
 
 ```bash
 pactl list short cards
 ```
 
-Tu dois voir :
+Exemple :
 
 ```
 alsa_card.usb-BIRD_UM1_BIRD_UM1-00
 ```
 
-2. **Activer le seul profil valide** (obligatoire) :
+
+### ⚠️ Choisir le BON profil (desktop)
+
+#### Profil recommandé (desktop)
 
 ```bash
-pactl set-card-profile alsa_card.usb-BIRD_UM1_BIRD_UM1-00 pro-audio
+pactl set-card-profile alsa_card.usb-BIRD_UM1_BIRD_UM1-00 input:mono-fallback
 ```
 
-3. Redémarrer PipeWire :
+✔ compatible navigateurs
+✔ stable après reboot
+✔ ne casse pas l’audio système
 
-```bash
-systemctl --user restart pipewire pipewire-pulse
-```
+---
 
-### Sélectionner la bonne source micro
+#### ❌ Profil à éviter en usage normal : `pro-audio`
 
-1. Lister les sources :
+`pro-audio` est **réservé aux environnements studio (JACK)**.
+
+Effets connus :
+
+* désactive les profils desktop
+* peut casser PipeWire après redémarrage
+* supprime enceintes et sources globales
+
+**À utiliser uniquement de manière TEMPORAIRE**, si aucun autre profil n’existe.
+
+### Sélectionner la source micro
 
 ```bash
 pactl list short sources | grep -i um1
 ```
 
-Tu dois voir une source du type :
-
-```
-alsa_input.usb-BIRD_UM1_BIRD_UM1-00.pro-input-0
-```
-
-2. La définir comme source par défaut :
+Puis :
 
 ```bash
-pactl set-default-source alsa_input.usb-BIRD_UM1_BIRD_UM1-00.pro-input-0
+pactl set-default-source alsa_input.usb-BIRD_UM1_BIRD_UM1-00.mono-fallback
 ```
 
 Vérification :
@@ -1204,7 +1211,33 @@ Vérification :
 pactl info | grep "Default Source"
 ```
 
+---
 
+## Récupération de la pile audio après redémarrage
+
+Si après un reboot :
+
+* `pactl` affiche *Connexion refusée*
+* plus aucun périphérique audio n’apparaît
+
+👉 La pile audio **user systemd** est incohérente.
+
+### Solution propre
+
+```bash
+systemctl --user daemon-reexec
+systemctl --user restart pipewire
+systemctl --user restart wireplumber
+systemctl --user restart pipewire-pulse
+```
+
+Cette commande :
+
+* redémarre systemd **utilisateur**
+* reconstruit les sockets PipeWire
+* restaure PulseAudio-compat
+
+  
 ---
 ---
 ---
