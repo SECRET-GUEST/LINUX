@@ -1140,8 +1140,6 @@ Pour l'exemple je vais utiliser le micro USB BIRD UM1 puisque ce probleme peut s
 * Il fonctionne en terminal
 * **Brave / Chrome affichent “aucun micro disponible”**
 
----
-
 ### Vérification de base (matériel OK)
 
 ```bash
@@ -1153,8 +1151,6 @@ Tu dois voir :
 ```
 carte 3 : UM1 [BIRD UM1]
 ```
-
----
 
 ### Activer le micro côté PipeWire (étape clé)
 
@@ -1181,8 +1177,6 @@ pactl set-card-profile alsa_card.usb-BIRD_UM1_BIRD_UM1-00 pro-audio
 ```bash
 systemctl --user restart pipewire pipewire-pulse
 ```
-
----
 
 ### Sélectionner la bonne source micro
 
