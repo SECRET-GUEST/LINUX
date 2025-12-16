@@ -1185,7 +1185,9 @@ alsa_card.usb-BIRD_UM1_BIRD_UM1-00
 ```
 
 
-### Cas 1 // le profil desktop existe
+### Cas 1 - le profil desktop existe
+
+> Ce cas concerne **certains** micros USB (pas tous)
 
 Vérifier les profils disponibles :
 
@@ -1199,10 +1201,16 @@ Si le profil `input:mono-fallback` est présent :
 pactl set-card-profile alsa_card.usb-BIRD_UM1_BIRD_UM1-00 input:mono-fallback
 ```
 
-Ce cas est le plus simple.
 
+### Cas 2 - le profil desktop n’existe PAS (cas courant des micros USB mono)
 
-### Cas 2 // le profil desktop n’existe PAS (cas courant des micros USB mono)
+C’est normal pour beaucoup de micros USB simples.
+
+Dans ce cas :
+
+* ❌ **ne pas forcer de profil**
+* ❌ **ne pas utiliser `pro-audio`**
+* ✔ on passe au test ALSA mono
 
 Symptôme :
 
@@ -1216,8 +1224,6 @@ retourne :
 Échec : Aucune entité de ce type
 ```
 
-C’est normal pour beaucoup de micros USB simples.
-
 
 ### Test réel du micro en ALSA (mono obligatoire)
 
@@ -1228,10 +1234,14 @@ arecord -D plughw:CARD=UM1,DEV=0 -c 1 -r 48000 -f S16_LE -d 5 /tmp/um1.wav
 aplay /tmp/um1.wav
 ```
 
-Si la voix est audible, le micro est sain.
+### Résultat attendu
+
+* Si la voix est audible, le micro est sain.
+* sinon → problème matériel (rare)
 
 
-### Correction propre et persistante (WirePlumber)
+
+### Correction persistante (WirePlumber)
 
 Créer la règle :
 
@@ -1270,7 +1280,6 @@ systemctl --user restart pipewire
 systemctl --user restart pipewire-pulse
 ```
 
----
 
 ### Sélectionner la source micro
 
@@ -1290,8 +1299,17 @@ Vérification :
 pactl info | grep "Default Source"
 ```
 
+### ❌ Profil à éviter : `pro-audio`
 
-### Récupération de la pile audio (si tout disparaît)
+`pro-audio` est **réservé à JACK / studio**.
+
+Effets connus :
+
+* supprime les profils desktop
+* casse WebRTC
+* peut laisser PipeWire sans source après reboot
+
+### Récupération de la pile audio (si tout disparaît dans l'interface )
 
 Si `pactl` retourne *Connexion refusée* après un reboot :
 
