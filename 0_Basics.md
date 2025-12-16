@@ -1130,16 +1130,31 @@ systemctl --user restart wireplumber pipewire pipewire-pulse 2>/dev/null || true
 > **[consultez le guide complet](https://github.com/SECRET-GUEST/tiny-scripts/blob/ALL/linux/Debug/fix%20alc408x/README_FR.md)**.
 
 
+Parfait, merci pour les consignes claires 👍
+Voici **le tutoriel réécrit exactement comme demandé** :
+
+* même titre **Fix micro USB**
+* **H2**, pas de H1
+* **pas d’émojis**
+* **pas de numérotation**
+* **concis**
+* **pas de sources**
+* uniquement ce qui est utile et actionnable
+* intégration propre du cas **micro USB mono (UM1)**
+
+---
+
 ## Fix micro USB
 
 ### Symptôme
 
 * le micro USB est visible via `arecord -l`
 * fonctionne en terminal
-* **absent dans Chrome / Brave / Firefox**
+* absent ou muet dans GNOME / Chrome / Brave / Firefox
 
 Exemple : **BIRD UM1**
-(valable pour la majorité des micros USB)
+(valable pour la majorité des micros USB simples)
+
 
 ### Vérification matérielle
 
@@ -1152,6 +1167,9 @@ Exemple :
 ```
 card 3: UM1 [BIRD UM1]
 ```
+
+Si le micro n’apparaît pas ici, le problème est matériel.
+S’il apparaît, ALSA fonctionne.
 
 
 ### Vérifier la carte PipeWire
@@ -1167,41 +1185,103 @@ alsa_card.usb-BIRD_UM1_BIRD_UM1-00
 ```
 
 
-### ⚠️ Choisir le BON profil (desktop)
+### Cas 1 // le profil desktop existe
 
-#### Profil recommandé (desktop)
+Vérifier les profils disponibles :
+
+```bash
+pactl list cards | grep -A20 BIRD
+```
+
+Si le profil `input:mono-fallback` est présent :
 
 ```bash
 pactl set-card-profile alsa_card.usb-BIRD_UM1_BIRD_UM1-00 input:mono-fallback
 ```
 
-✔ compatible navigateurs
-✔ stable après reboot
-✔ ne casse pas l’audio système
+Ce cas est le plus simple.
 
 
-#### ❌ Profil à éviter en usage normal : `pro-audio`
+### Cas 2 // le profil desktop n’existe PAS (cas courant des micros USB mono)
 
-`pro-audio` est **réservé aux environnements studio (JACK)**.
+Symptôme :
 
-Effets connus :
+```bash
+pactl set-card-profile alsa_card.usb-BIRD_UM1_BIRD_UM1-00 input:mono-fallback
+```
 
-* désactive les profils desktop
-* peut casser PipeWire après redémarrage
-* supprime enceintes et sources globales
+retourne :
 
-**À utiliser uniquement de manière TEMPORAIRE**, si aucun autre profil n’existe.
+```
+Échec : Aucune entité de ce type
+```
+
+C’est normal pour beaucoup de micros USB simples.
+
+
+### Test réel du micro en ALSA (mono obligatoire)
+
+Le micro **doit fonctionner ici** avant toute correction PipeWire.
+
+```bash
+arecord -D plughw:CARD=UM1,DEV=0 -c 1 -r 48000 -f S16_LE -d 5 /tmp/um1.wav
+aplay /tmp/um1.wav
+```
+
+Si la voix est audible, le micro est sain.
+
+
+### Correction propre et persistante (WirePlumber)
+
+Créer la règle :
+
+```bash
+mkdir -p ~/.config/wireplumber/main.lua.d
+vim ~/.config/wireplumber/main.lua.d/90-bird-um1-mono.lua
+```
+
+Contenu :
+
+```lua
+rule = {
+  matches = {
+    {
+      { "device.name", "equals", "alsa_card.usb-BIRD_UM1_BIRD_UM1-00" },
+    },
+  },
+  apply_properties = {
+    ["api.alsa.use-acp"] = false,
+    ["api.alsa.use-ucm"] = false,
+    ["audio.channels"] = 1,
+    ["audio.position"] = "MONO",
+    ["api.alsa.card"] = "UM1",
+    ["api.alsa.device"] = "0",
+  },
+}
+
+table.insert(alsa_monitor.rules, rule)
+```
+
+### Redémarrer la pile audio
+
+```bash
+systemctl --user restart wireplumber
+systemctl --user restart pipewire
+systemctl --user restart pipewire-pulse
+```
+
+---
 
 ### Sélectionner la source micro
 
 ```bash
-pactl list short sources | grep -i um1
+pactl list short sources
 ```
 
-Puis :
+Identifier la source UM1 mono, puis :
 
 ```bash
-pactl set-default-source alsa_input.usb-BIRD_UM1_BIRD_UM1-00.mono-fallback
+pactl set-default-source <ID_DE_LA_SOURCE>
 ```
 
 Vérification :
@@ -1210,18 +1290,10 @@ Vérification :
 pactl info | grep "Default Source"
 ```
 
----
 
-## Récupération de la pile audio après redémarrage
+### Récupération de la pile audio (si tout disparaît)
 
-Si après un reboot :
-
-* `pactl` affiche *Connexion refusée*
-* plus aucun périphérique audio n’apparaît
-
-👉 La pile audio **user systemd** est incohérente.
-
-### Solution propre
+Si `pactl` retourne *Connexion refusée* après un reboot :
 
 ```bash
 systemctl --user daemon-reexec
@@ -1229,12 +1301,6 @@ systemctl --user restart pipewire
 systemctl --user restart wireplumber
 systemctl --user restart pipewire-pulse
 ```
-
-Cette commande :
-
-* redémarre systemd **utilisateur**
-* reconstruit les sockets PipeWire
-* restaure PulseAudio-compat
 
   
 ---
